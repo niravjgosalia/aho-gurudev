@@ -30,6 +30,7 @@ const WebAnimationFrame1 = () => {
         end: "+=500%",
         scrub: true,
         pin: true,
+        markers:false,
       },
     });
 
@@ -469,7 +470,7 @@ const WebAnimationFrame1 = () => {
   const words = textContent.split(" ");
 
   return (
-    <div ref={containerRef} className="h-screen relative overflow-hidden">
+    <div ref={containerRef} className="relative h-screen overflow-hidden">
       {/* overview */}
       <div
         ref={overviewRef}
@@ -523,7 +524,7 @@ const WebAnimationFrame1 = () => {
           ref={wordContainerRef}
           className=" max-lg:pt-5 max-lg:h-[40%] max-lg:overflow-auto   lg:w-[25.781vw] w-full md:w-[600px] text-primary max-lg:bg-[#f3f2dd] max-lg:relative z-[1]  "
         >
-          <h6 className="heading seasons  capitalize">Who is gurudev ?</h6>
+          <h6 className="capitalize heading seasons">Who is gurudev ?</h6>
           <p className="content ">
             {words.map((word, i) => (
               <span
@@ -543,11 +544,11 @@ const WebAnimationFrame1 = () => {
       </div>
 
       {/* immersion */}
-      <div ref={immersionContainer} className=" absolute w-full h-full">
-        <div className=" flex flex-col lg:flex-row h-full justify-center items-center text-primary relative">
+      <div ref={immersionContainer} className="absolute w-full h-full ">
+        <div className="relative flex flex-col items-center justify-center h-full lg:flex-row text-primary">
           <h6
             ref={(el) => (immersiveTitleRef.current[0] = el)}
-            className=" heading seasons  capitalize"
+            className="capitalize  heading seasons"
           >
             The immersive
           </h6>
@@ -641,10 +642,10 @@ const WebAnimationFrame1 = () => {
               ref={(el) => (immersive1Ref.current[1] = el)}
               className=" w-[90%] lg:w-[25.615vw] max-lg:absolute"
             >
-              <h6 className=" heading-sm seasons  capitalize mb-3 ">
+              <h6 className="mb-3 capitalize  heading-sm seasons">
                 Early Years
               </h6>
-              <p className=" content text-secondary ">
+              <p className=" content text-secondary">
                 {" "}
                 As a child, He was gifted. But few could imagine the
                 extraordinary calibre concealed behind those eyes.

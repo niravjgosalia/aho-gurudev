@@ -53,15 +53,15 @@ function HistoricCelebration() {
       <div ref={sectionRef} className="relative min-h-screen overflow-hidden">
         <div className="h-screen overflow-hidden">
           <div className="md:flex my-[4vw] container px-4 mx-auto content z-10 relative">
-            <div className="w-full md:w-8/12">
+            <div className="w-full md:w-10/12">
               <h2 className="sec_title text-[#5E2A29] capitalize font-[700]">
                 Historic Celebration
               </h2>
               <p
-                className={`${montserrat.className} text-sm md:text-lg lg:text-[1.354vw] text-[#322F35]`}
+                className={`${montserrat.className} content`}
               >
                 Spiritual festivals, social impact initiatives. all around the
-                globe, cultural carnivals. A year-long celebration honouring
+                globe, cultural carnivals.<br /> A year-long celebration honouring
                 Pujya Gurudevshri’s inspiring life.
               </p>
             </div>
@@ -73,7 +73,7 @@ function HistoricCelebration() {
               <Image
                 src="/images/historic-celeberation.png"
                 fill
-                
+
                 alt="image1"
                 className="object-cover"
               />
