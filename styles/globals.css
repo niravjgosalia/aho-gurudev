@@ -46,3 +46,100 @@ a {
 .content {
   @apply text-[16px] lg:text-[1.354vw] font-normal;
 }
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/fonts/TheSeasons.woff") format("woff");
+  font-display: swap;
+}
+.sm-text {
+  font-size: 1vw;
+  line-height: 1.2;
+}
+.logowrapper {
+  max-width: 11vw;
+}
+.seasons {
+  font-family: "The Seasons";
+}
+.sec_title {
+  font-family: "The Seasons";
+  font-size: 3vw;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.custnav.lightnav .swiper-scrollbar {
+  background: #ffffff4d;
+}
+.custnav.lightnav .swiper-scrollbar-drag {
+  background: #fff;
+}
+.homebanner .swiper-pagination-bullet {
+  position: relative;
+  width: 3vw;
+  height: auto;
+  text-align: left;
+  border-radius: 0;
+  opacity: 1;
+  margin-right: 0.9vw;
+  background-color: transparent;
+}
+.homebanner .swiper-pagination {
+  position: absolute;
+  top: 66% !important;
+  left: 22% !important;
+}
+.homebanner .swiper-pagination-bullet i {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 0.2vw;
+  background: rgba(255, 255, 255, 0.3);
+}
+.homebanner .swiper-pagination-bullet b {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 0%;
+  height: 0.2vw;
+  background-color: rgb(255, 255, 255);
+}
+.homebanner .swiper-pagination-bullet-active {
+  background-color: transparent;
+}
+.homebanner .swiper-pagination-bullet-active b {
+  animation-name: countingBar;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes countingBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .logowrapper {
+    max-width: 8rem;
+  }
+  .sec_title {
+    font-size: 28px;
+  }
+}
