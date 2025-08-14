@@ -38,16 +38,26 @@ a {
 .text-primary {
   @apply text-[#5E2A29];
 }
+.text-secondary {
+  @apply text-[#322F35];
+}
 
-.heading {
+.seasons {
   font-family: "The Seasons";
 }
 .heading {
   @apply text-[36px] lg:text-[5.208vw];
 }
+.heading-sm {
+  @apply text-[36px] lg:text-[1.979vw] font-bold;
+}
 
 .content {
   @apply text-[16px] lg:text-[1.354vw] font-normal;
+}
+
+.custom-shadow {
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.25);
 }
 
 @font-face {

@@ -1,4 +1,3 @@
-
 import HistoricCelebration from "@/components/HistoricCelebration";
 import MobAnimationFrame1 from "@/components/home/MobAnimationFrame1";
 import WebAnimationFrame1 from "@/components/home/WebAnimationFrame1";
@@ -25,7 +24,7 @@ const Home = () => {
         <WebAnimationFrame1 />
         <HistoricCelebration />
         {/* Loader overlay */}
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {loading && (
             <motion.div
               key="loader"
@@ -38,7 +37,7 @@ const Home = () => {
               <Loader />
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
       {/* <div className=" lg:hidden">
         <HeaderMob />

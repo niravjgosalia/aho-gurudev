@@ -183,7 +183,7 @@ const MobAnimationFrame1 = () => {
           ref={wordContainerRef}
           className=" h-[25rem] text-primary flex flex-col justify-center items-center"
         >
-          <h6 className="heading capitalize">Who is gurudev ?</h6>
+          <h6 className="heading seasons  capitalize">Who is gurudev ?</h6>
           <p className="content">
             {words.map((word, i) => (
               <span
