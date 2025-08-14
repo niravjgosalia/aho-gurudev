@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import "@/styles/globals.css";
+import "@/styles/style.css";
+
 import Lenis from "@studio-freight/lenis";
 
 export default function App({ Component, pageProps }) {

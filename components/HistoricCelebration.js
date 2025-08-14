@@ -92,7 +92,7 @@ function HistoricCelebration() {
           {/* EventsHighlight */}
           <div
             ref={eventsRef}
-            className="md:absolute md:bottom-[5vw] right-0 z-50"
+            className="absolute bottom-[2rem] md:bottom-[6rem] lg:bottom-[5vw] right-2 md:right-0 z-50"
           >
             <EventsHighlight />
           </div>

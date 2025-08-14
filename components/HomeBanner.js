@@ -58,26 +58,22 @@ function HomeBanner({ startAnimation }) {
   };
 
   useEffect(() => {
-    // Animate when section in viewport
-    if (refs.current.length > 0 && startAnimation) {
-      gsap.fromTo(
-        refs.current,
-        { y: 100, opacity: 0, visibility: "hidden" },
-        {
-          y: 0,
-          opacity: 1,
-          visibility: "visible",
-          stagger: 0.1,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: container.current,
-            start: "top 80%",
-          },
-        }
-      );
-    }
-  }, [startAnimation]);
+  if (refs.current.length > 0 && startAnimation) {
+    gsap.set(refs.current, { clipPath: "inset(0 100% 0 0)" }); // hidden from right
+
+    gsap.to(refs.current, {
+      clipPath: "inset(0 0% 0 0)", // fully visible
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.05,
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 80%",
+      },
+    });
+  }
+}, [startAnimation]);
+
 
   return (
     <div
@@ -120,7 +116,7 @@ function HomeBanner({ startAnimation }) {
                   className="w-full h-auto max-w-full"
                   alt="home banner"
                 />
-                <h3 className="bannertitle w-[30.208vw] right-[4vw] leading-[7vw] z-[9] bottom-[40%] text-white absolute capitalize text-[7.708vw]">
+                <h3 className="bannertitle tracking-[-0.3vw] letter w-[30.208vw] right-[7vw] leading-[7vw] z-[9] bottom-[40%] text-white absolute capitalize text-[7.708vw]">
                   {splitWords(item?.title)}
                 </h3>
               </div>

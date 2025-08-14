@@ -32,13 +32,13 @@ const data = [
 
 function EventsHighlight() {
   return (
-    <div>
-      <div className="relative w-4/12 ml-auto">
+    <div className ='w-full h-full'>
+      <div className="relative w-[30vw] max-md:w-[13rem] max-lg:w-[25rem] ml-auto">
         <Swiper
           modules={[Autoplay, Navigation, Scrollbar]}
           slidesPerView={1}
           breakpoints={{
-            0: { slidesPerView: 1, spaceBetween: 20 },
+            0: { slidesPerView: 1, spaceBetween: 22 },
             767: { slidesPerView: 1, spaceBetween: 22 },
             1199: { slidesPerView: 1.4, spaceBetween: 22 },
             1300: { slidesPerView: 1.4, spaceBetween: 22 },
@@ -63,7 +63,7 @@ function EventsHighlight() {
           {data &&
             data.map((item, index) => (
               <SwiperSlide key={`event_${index}`} className="custom-slide">
-                <div className="relative bg-white p-[0.8vw]">
+                <div className="relative bg-white p-3 md:p-[0.8vw]">
                   <div className="eventimg">
                     <Image
                       src={item.img}
@@ -75,9 +75,9 @@ function EventsHighlight() {
                     />
                   </div>
 
-                  <div className="eventcontent md:mt-[1vw]">
-                    <div className="flex justify-between gap-[0.7vw]">
-                      <h4 className="title text-[1.1vw] seasons text-[#5E2A29]">
+                  <div className="eventcontent mt-3 xl:mt-[1vw]">
+                    <div className="flex justify-between gap-1 md:gap-[0.7vw]">
+                      <h4 className="title text-md md:text-lg xl:text-[1.1vw] seasons text-[#5E2A29]">
                         {item.title}
                       </h4>
                       <div className="playbtn">
@@ -87,7 +87,7 @@ function EventsHighlight() {
                           viewBox="0 0 32 32"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className=" w-[1.667vw] h-[1.667vw]"
+                          className="w-[25px] h-[25px] md:w-[1.667vw] md:h-[1.667vw]"
                         >
                           <rect
                             x={0.5}
@@ -118,7 +118,7 @@ function EventsHighlight() {
               </SwiperSlide>
             ))}
         </Swiper>
-        <div className="w-7/12 mt-5 custnav lightnav">
+        <div className="w-9/12 mt-5 md:w-7/12 custnav lightnav">
           <div className="flex items-center gap-3">
             <button className="text-center bg-white cursor-pointer cust-swiper-button-prev">
               <svg
@@ -127,7 +127,7 @@ function EventsHighlight() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[2.083vw] h-[2.083vw] p-[0.4vw]"
+                className="w-[24px] h-[24px] p-1 md:w-[2.083vw] md:h-[2.083vw] md:p-[0.4vw]"
               >
                 <path
                   d="M18.4023 11.625H4.83984"
@@ -156,7 +156,7 @@ function EventsHighlight() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[2.083vw] h-[2.083vw] p-[0.4vw]"
+                className="w-[24px] h-[24px] p-1 md:w-[2.083vw] md:h-[2.083vw] md:p-[0.4vw]"
               >
                 <path
                   d="M5.59766 11.625H19.1602"
