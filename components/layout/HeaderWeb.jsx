@@ -54,13 +54,13 @@ const HeaderWeb = () => {
       transition={{ type: "spring", stiffness: 100, damping: 20 }} // Smooth motion
       className=" fixed z-10 lg:py-[0.625vw] w-full containerx bg-[#f3f2dd]"
     >
-      <div className=" flex justify-between items-center h-full text-primary">
+      <div className="flex items-center justify-between h-full text-primary">
         <div>
           <Image
-            height={68}
-            width={372}
+            height={54}
+            width={277}
             src={"/logo.svg"}
-            className=" lg:w-[19.357vw] "
+            className=" lg:w-[14.375vw] "
           />
         </div>
         <nav className=" flex items-center lg:gap-[2.083vw]">
@@ -68,7 +68,7 @@ const HeaderWeb = () => {
             <Link
               href={item?.link}
               key={index}
-              className=" uppercase font-medium"
+              className="font-medium uppercase "
             >
               {item?.name}
             </Link>
