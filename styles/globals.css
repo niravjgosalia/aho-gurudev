@@ -40,6 +40,9 @@ a {
 }
 
 .heading {
+  font-family: "The Seasons";
+}
+.heading {
   @apply text-[36px] lg:text-[5.208vw];
 }
 

@@ -177,7 +177,11 @@ const WebAnimationFrame1 = () => {
           "<"
         );
 
-      tl.to(immersiveImageRef.current[0], { x: "-75vw", y: "-20vw" })
+      tl.to(immersiveImageRef.current[0], {
+        delay: 1.5,
+        x: "-75vw",
+        y: "-20vw",
+      })
         .to(immersiveImageRef.current[1], { x: "-75vw", y: "24vw" }, "<")
         .to(immersiveImageRef.current[2], { x: "-75vw", y: "24vw" }, "<")
         .to(immersiveImageRef.current[3], { x: "75vw", y: "-22vw" }, "<")
@@ -331,7 +335,11 @@ const WebAnimationFrame1 = () => {
           "<"
         );
 
-      tl.to(immersiveImageRef.current[0], { x: "-75vw", y: "-170vw" })
+      tl.to(immersiveImageRef.current[0], {
+        delay: 1.5,
+        x: "-75vw",
+        y: "-170vw",
+      })
         .to(immersiveImageRef.current[1], { x: "-75vw", y: "170vw" }, "<")
         .to(immersiveImageRef.current[2], { x: "-75vw", y: "170vw" }, "<")
         .to(immersiveImageRef.current[3], { x: "75vw", y: "-170vw" }, "<")
@@ -516,6 +524,20 @@ const WebAnimationFrame1 = () => {
               />
             </div>
           </div>
+          {/* life 2 */}
+          {/* <div className=" absolute flex justify-center h-full w-full items-center ">
+            <div
+              ref={(el) => (immersive1Ref.current[0] = el)}
+              className=" w-[84.54px] lg:w-[14.496vw] h-auto absolute"
+            >
+              <Image
+                height={262}
+                width={159}
+                src={"/images/home/immersion/life2.webp"}
+                className=" size-full"
+              />
+            </div>
+          </div> */}
         </div>
       </div>
     </div>
