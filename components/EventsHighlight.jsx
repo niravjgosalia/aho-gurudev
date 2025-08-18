@@ -1,11 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Scrollbar } from "swiper/modules";
+import { Navigation, Autoplay, Scrollbar, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Image from "next/image";
+import Roundeffect from "./layout/Roundeffect";
 
 const data = [
   {
@@ -32,10 +33,10 @@ const data = [
 
 function EventsHighlight() {
   return (
-    <div className ='w-full h-full'>
-      <div className="relative w-[30vw] max-md:w-[13rem] max-lg:w-[25rem] ml-auto">
+    <div className="w-full h-full">
+      <div className="relative w-[30vw] max-w-full max-sm:px-4 max-sm:w-[25rem] max-sm:mx-auto max-md:w-[15rem] max-lg:w-[25rem] ml-auto">
         <Swiper
-          modules={[Autoplay, Navigation, Scrollbar]}
+          modules={[Autoplay, Navigation, Scrollbar, Pagination]}
           slidesPerView={1}
           breakpoints={{
             0: { slidesPerView: 1, spaceBetween: 22 },
@@ -47,6 +48,15 @@ function EventsHighlight() {
           navigation={{
             nextEl: ".cust-swiper-button-next",
             prevEl: ".cust-swiper-button-prev",
+          }}
+          pagination={{
+            el: ".custom-pagination",
+            clickable: true,
+            bulletClass: "custom-bullet",
+            bulletActiveClass: "custom-bullet-active",
+            renderBullet: (index, className) => {
+              return `<span class="${className}"></span>`;
+            },
           }}
           scrollbar={{
             el: ".swiper-scrollbar",
@@ -63,7 +73,7 @@ function EventsHighlight() {
           {data &&
             data.map((item, index) => (
               <SwiperSlide key={`event_${index}`} className="custom-slide">
-                <div className="relative bg-white p-3 md:p-[0.8vw]">
+                <div className="relative bg-white max-sm:pb-[20px] max-sm:px-[12px] p-3 md:p-[0.8vw]">
                   <div className="eventimg">
                     <Image
                       src={item.img}
@@ -112,13 +122,21 @@ function EventsHighlight() {
                         </svg>
                       </div>
                     </div>
-                    <p className="sm-text text-[#322F35] mt-2">{item.desc}</p>
+                    <p className="sm-text text-[#322F35] mt-2 max-sm:pb-2">{item.desc}</p>
                   </div>
+
+                  <div className="roundimg max-lg:-top-[15px] max-lg:left-0 max-lg:-scale-y-[1] absolute right-0 z-[3]">
+                    <Roundeffect transbg={true} />
+                  </div>
+                  <div className="roundimg max-lg:-bottom-[13px] max-lg:right-0 absolute -scale-x-[1] left-0 z-[3]">
+                    <Roundeffect transbg={true} />
+                  </div>
+
                 </div>
               </SwiperSlide>
             ))}
         </Swiper>
-        <div className="w-9/12 mt-5 md:w-7/12 custnav lightnav">
+        <div className="hidden w-9/12 mt-5 md:w-7/12 custnav lightnav lg:block">
           <div className="flex items-center gap-3">
             <button className="text-center bg-white cursor-pointer cust-swiper-button-prev">
               <svg
@@ -175,6 +193,9 @@ function EventsHighlight() {
               </svg>
             </button>
           </div>
+        </div>
+        <div className="block pb-1 lg:hidden">
+          <div className="flex justify-center gap-3 mt-4 custom-pagination lightpagination"></div>
         </div>
       </div>
     </div>

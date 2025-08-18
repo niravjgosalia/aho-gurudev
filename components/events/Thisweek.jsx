@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import Roundeffect from "../layout/Roundeffect";
 
 const events = [
   { title: "Festival of Bliss", img: "/images/events/event1.jpg" },
@@ -63,15 +64,16 @@ function Thisweek() {
           >
             {events?.map((item, i) => {
               return (
-                <SwiperSlide key={`event${i}`} className="relative py-[1vw]">
-                  <div className="mb-[1vw] w-full bg-white flex flex-col-reverse items-center lg:flex-row eventcard">
+                <SwiperSlide key={`event${i}`} className="relative">
+                  <div className="mb-[1vw] p-[10px] lg:p-[1vw] w-full bg-white justify-content-center flex flex-col-reverse items-center lg:flex-row eventcard">
+                    
                     {/* Left Content */}
                     <div className="flex-1 p-3 lg:ps-[4vw] lg:p-[0.9vw] z-[2]">
                       {/* Title */}
                       <h2 className="text-[18px] font-bold md:text-2xl lg:text-[2.083vw] mb-2 md:mb-[1vw] seasons text-[#5E2A29]">
                         {item?.title}
                       </h2>
-                      <p className="max-w-md text-gray-600 text-[14px] leading-normal lg:text-[1vw]">
+                      <p className="text-gray-600 text-[14px] leading-normal lg:text-[1vw]">
                         Special launches and heartfelt offerings to enter a
                         milestone year.
                       </p>
@@ -85,10 +87,10 @@ function Thisweek() {
                               alt="icons"
                               width={24}
                               height={24}
-                              className="h-auto max-w-full"
+                              className="w-full h-auto max-w-full"
                             />
                           </div>
-                          <span className="text-[13px] md:text-[20px] lg:text-[1vw]">
+                          <span className="text-[13px] md:text-[16px] lg:text-[1vw]">
                             Fri, Sep 26 to Sun, Sep 28
                           </span>
                         </div>
@@ -100,10 +102,10 @@ function Thisweek() {
                               alt="icons"
                               width={25}
                               height={24}
-                              className="h-auto max-w-full"
+                              className="w-full h-auto max-w-full"
                             />
                           </div>
-                          <span className="text-[13px] md:text-[20px] lg:text-[1vw]">
+                          <span className="text-[13px] md:text-[16px] lg:text-[1vw]">
                             Dharampur
                           </span>
                         </div>
@@ -215,9 +217,7 @@ function Thisweek() {
                         </div>
                         {/* Button */}
                         <div className="mt-6 md:mt-[1.1vw] btnwrap ">
-                          <button className="flatbtn">
-                            Register
-                          </button>
+                          <button className="flatbtn">Register</button>
                         </div>
                       </div>
                     </div>
@@ -230,14 +230,15 @@ function Thisweek() {
                         //   fill
                         width={779}
                         height={598}
-                        className="object-cover p-3 md:p-[0.8vw] max-w-full h-auto"
+                        className="object-cover h-auto max-w-full lg:w-full"
                       />
                     </div>
-                    <div className="roundimg absolute right-0 bg-[#f3f2dd] z-[3]">
-                      <Image src="/images/roundedeffect.png" className="w-[3vw] h-[6vw] rounded-circle"  width={128} height={246} alt="round border" />
+                    
+                    <div className="roundimg max-lg:-top-[15px] max-lg:left-0 max-lg:-scale-y-[1] absolute right-0 z-[3]">
+                      <Roundeffect />
                     </div>
-                    <div className="roundimg absolute -scale-x-[1] left-0 bg-[#f3f2dd] z-[3]">
-                      <Image src="/images/roundedeffect.png" className="w-[3vw] h-[6vw] rounded-circle"  width={128} height={246} alt="round border" />
+                    <div className="roundimg max-lg:-bottom-[13px] max-lg:right-0 absolute -scale-x-[1] left-0 z-[3]">
+                      <Roundeffect />
                     </div>
                   </div>
                 </SwiperSlide>
@@ -272,7 +273,7 @@ function Thisweek() {
                 />
               </svg>
             </button>
-          
+
             <button className="text-center bg-transparent border border-[#5E2A29] cursor-pointer event-swiper-button-next hover:bg-[#5E2A29] rotate-90">
               <svg
                 width={24}
@@ -300,7 +301,7 @@ function Thisweek() {
             </button>
           </div>
         </div>
-        <div className="block lg:hidden">
+        <div className="block pb-1 lg:hidden">
           <div className="flex justify-center gap-3 mt-4 custom-pagination"></div>
         </div>
       </div>

@@ -18,7 +18,7 @@ function EventCalender() {
         <div className="headwrap">
           <h3 className="heading seasons text-[#5E2A29]">The Event Calendar</h3>
         </div>
-        <div className="w-full my-6 md:my-6 lg:my-[1.2vw] flex gap-5 md:gap-[2vw] text-[#5E2A29] font-medium relative overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <div className="w-full my-6 md:my-6 lg:my-[1.2vw] pb-[1vw] flex gap-5 md:gap-[2vw] text-[#5E2A29] font-medium relative overflow-x-auto whitespace-nowrap scrollbar-hide">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -41,7 +41,7 @@ function EventCalender() {
           ))}
         </div>
 
-        <div className="">
+        <div className="overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab} // ensures animation on change

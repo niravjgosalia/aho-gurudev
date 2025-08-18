@@ -22,15 +22,16 @@ function HistoricCelebration() {
       gsap.set(eventsRef.current, { x: "100%", opacity: 0 }); // start EventsHighlight offscreen right
 
       // Timeline with ScrollTrigger
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-          pin: true,
-        },
-      })
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            pin: true,
+          },
+        })
         // Step 1: Reveal second image
         .to(img2Ref.current, {
           clipPath: "inset(0% 0% 0% 0%)",
@@ -58,12 +59,11 @@ function HistoricCelebration() {
               <h2 className="heading seasons text-[#5E2A29] capitalize">
                 Historic Celebration
               </h2>
-              <p
-                className={`content`}
-              >
+              <p className={`content`}>
                 Spiritual festivals, social impact initiatives. all around the
-                globe, cultural carnivals.<br /> A year-long celebration honouring
-                Pujya Gurudevshri’s inspiring life.
+                globe, cultural carnivals.
+                <br /> A year-long celebration honouring Pujya Gurudevshri’s
+                inspiring life.
               </p>
             </div>
           </div>
@@ -92,10 +92,11 @@ function HistoricCelebration() {
           {/* EventsHighlight */}
           <div
             ref={eventsRef}
-            className="absolute bottom-[2rem] md:bottom-[6rem] lg:bottom-[5vw] right-2 md:right-0 z-50"
+            className="absolute bottom-[2rem] md:bottom-[6rem] lg:bottom-[5vw] max-sm:right-0 max-sm:mx-auto  max-sm:left-0 right-2 md:right-0 z-50"
           >
             <EventsHighlight />
           </div>
+          <div className="w-full h-full z-1 absolute top-0 left-0 overlay bg-[linear-gradient(0deg,rgba(57,61,71,0.8),rgba(57,61,71,0.8))"></div>
         </div>
       </div>
     </>

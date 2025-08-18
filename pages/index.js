@@ -64,16 +64,16 @@ const Home = () => {
           </div>
         </> :
           <>
-            <MobileHeader />
+            {/* <MobileHeader />
             <MobileBanner />
-            <WebAnimationFrame1 />
+            <WebAnimationFrame1 /> */}
             <HistoricCelebration />
-            <EventCalender />
+            {/* <EventCalender />
             <SocialProjects />
             <Testimonials />
             <CTAcomp />
             <Impact />
-            <DailyOffering />
+            <DailyOffering /> */}
 
 
           </>

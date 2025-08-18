@@ -48,10 +48,10 @@ function Gratitudetree() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isReturning, setIsReturning] = useState(false);
   // const [birdPosition, setBirdPosition] = useState([-2, 1.3, 1.2]);
-  const [birdRotation, setBirdRotation] = useState([0, Math.PI / -1.5, 0]);
-  const [birdPosition, setBirdPosition] = useState([-2, 1.3, 1.2]);
-  const birdPositionRef = useRef({ x: -2, y: 1.3, z: 1.2 });
-  const birdRotationRef = useRef({ x: 0, y: Math.PI / -1.5, z: 0 });
+  const [birdRotation, setBirdRotation] = useState([0, Math.PI / -1.8, 0]);
+  const [birdPosition, setBirdPosition] = useState([-2, 1.4, 1.2]);
+  const birdPositionRef = useRef({ x: -2, y: 1.4, z: 1.2 });
+  const birdRotationRef = useRef({ x: 0, y: Math.PI / -1.8, z: 0 });
 
   const treeRef = useRef(null);
   const svgRef = useRef(null);
@@ -88,9 +88,9 @@ function Gratitudetree() {
     tl.to(
       leafRef.current,
       {
-        x: -12,
-        y: 20,
-        scale: 5,
+        x: "0",
+        y: "1.5vw",
+        scale: 3,
         ease: "power2.inOut",
       },
       "<"
@@ -100,8 +100,8 @@ function Gratitudetree() {
     tl.to(
       birdWrapper.current,
       {
-        x: 55,
-        y: 2,
+        x: "5.7vw",
+        y: "3.2vw",
         ease: "power2.inOut",
       },
       "<"
@@ -120,26 +120,12 @@ function Gratitudetree() {
     tl.to(
       birdLeafWrapper.current,
       {
-        xPercent: 25,
-        yPercent: 10,
+        x: "23vw",
+        y: "3.2vw",
         ease: "power2.inOut",
       },
       ">"
     );
-    // tl.to(birdRotationRef.current, {
-    //   x: 3,
-    //   y: 1.5,
-    //   z: 1.2,
-    //   duration: 1,
-    //   ease: "power2.inOut",
-    //   onUpdate: () => {
-    //     setBirdPosition([
-    //       birdPositionRef.current.x,
-    //       birdPositionRef.current.y,
-    //       birdPositionRef.current.z,
-    //     ]);
-    //   },
-    // });
 
     tl.to(
       treeRef.current,
@@ -154,7 +140,7 @@ function Gratitudetree() {
       svgRef.current,
       {
         opacity: 1,
-        y: 110,
+        y: "5.729vw",
         ease: "power1.out",
       },
       "<"
@@ -163,8 +149,8 @@ function Gratitudetree() {
     tl.to(
       leafRef.current,
       {
-        x: "+=270",
-        y: "+=200",
+        x: "+=14.063vw",
+        y: "+=10.417vw",
         rotation: -50,
         scale: 50,
         opacity: 0.3,
@@ -173,7 +159,7 @@ function Gratitudetree() {
       "start"
     );
 
-    // Fade out the gratitude text
+    // // Fade out the gratitude text
     tl.to(
       gratitudeRef.current,
       {
@@ -184,7 +170,7 @@ function Gratitudetree() {
       "start"
     );
 
-    // Fade in the gratitude form
+    // // Fade in the gratitude form
     tl.to(
       gratitudeFormRef.current,
       {
@@ -204,8 +190,8 @@ function Gratitudetree() {
     reverseTl.to(
       leafRef.current,
       {
-        x: "8",
-        y: "12",
+        x: "0.417vw",
+        y: "0.625vw",
         rotation: 1,
         scale: 5,
         opacity: 1,
@@ -236,7 +222,7 @@ function Gratitudetree() {
       birdPositionRef.current,
       {
         x: -1.67,
-        y: 1.34,
+        y: 1.49,
         z: 1.2,
         duration: 1,
         ease: "power2.inOut",
@@ -264,8 +250,8 @@ function Gratitudetree() {
     reverseTl.to(
       birdLeafWrapper.current,
       {
-        xPercent: 0,
-        yPercent: 0,
+        x: 0,
+        y: "-2vw",
         duration: 1.5,
         ease: "power2.inOut",
       },
@@ -294,6 +280,13 @@ function Gratitudetree() {
       "rev2"
     );
 
+    reverseTl.to(leafRef.current, {
+      scale: 0.6,
+      y: "2vw",
+      opacity: 1,
+      ease: "power1.out",
+    });
+
     reverseTl.to(
       svgRef.current,
       {
@@ -301,6 +294,43 @@ function Gratitudetree() {
         ease: "power1.out",
       },
       "rev2"
+    );
+
+    reverseTl.to(
+      birdRotationRef.current,
+      {
+        x: 0,
+        y: Math.PI / -1.8,
+        z: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          setBirdRotation([
+            birdRotationRef.current.x,
+            birdRotationRef.current.y,
+            birdRotationRef.current.z,
+          ]);
+        },
+      },
+      "end"
+    );
+    reverseTl.to(
+      birdPositionRef.current,
+      {
+        x: -2,
+        y: 1.4,
+        z: 1.2,
+        duration: 1,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          setBirdPosition([
+            birdPositionRef.current.x,
+            birdPositionRef.current.y,
+            birdPositionRef.current.z,
+          ]);
+        },
+      },
+      "end"
     );
 
     // Store both timelines in refs
@@ -341,7 +371,9 @@ function Gratitudetree() {
     animationRef.current.reverse
       .restart()
       .timeScale(0.3)
-      .then(() => setIsAnimating(false));
+      .then(() => {
+        setIsAnimating(false);
+      });
   };
 
   const onSubmit = (data) => {
@@ -361,33 +393,33 @@ function Gratitudetree() {
           {/* 3D Bird */}
           <div className="w-full h-full" ref={birdWrapper}>
             <Canvas camera={{ position: [0, 2, 5], fov: 50 }}>
-              {/* <axesHelper args={[5]} />  */}
-              {/* <gridHelper
-                args={[30, 30]} // Size and divisions
-                position={[0, -1, 0]} // Position it below the bird
+              {/* <axesHelper args={[5]} /> 
+              <gridHelper
+                args={[30, 30]}
+                position={[0, -1, 0]}
                 rotation={[0, 0, 0]}
               /> */}
               <ambientLight intensity={0.5} />
               <directionalLight position={[5, 5, 5]} />
               <Suspense fallback={null}>
                 <BirdModel
-                  url="/models/flying_bird.glb"
+                  url="/models/bird.glb"
                   rotationRef={birdRotationRef}
                   positionRef={birdPositionRef}
                 />
               </Suspense>
-              <OrbitControls enableZoom={false} enablePan={false} />
+              {/* <OrbitControls enableZoom={false} enablePan={false} /> */}
             </Canvas>
           </div>
 
           {/* Leaf */}
-          <div ref={leafRef} className="absolute z-[2] top-[12vw] left-[28vw]">
+          <div ref={leafRef} className="absolute z-[2] top-[14vw] left-[28vw]">
             <Image
               src="/images/gratitude/leaf.svg"
               width={118}
               height={80}
               alt="leaf"
-              className="h-auto w-[1vw] max-w-full"
+              className="h-[1vw] w-[1vw] max-w-full"
             />
           </div>
         </div>
@@ -397,14 +429,14 @@ function Gratitudetree() {
             <div className="relative flex justify-center gratitudetreewrap">
               <div
                 ref={treeRef}
-                className="relative tree pt-[15vw] overflow-visible"
+                className="relative overflow-visible tree  pt-[15vw]"
               >
                 <Image
                   src="/images/gratitude/tree.png"
                   width={487}
                   height={761}
                   alt="tree"
-                  className="h-auto w-[25.365vw] max-w-full"
+                  className="h-[39.948vw] w-[25.365vw] max-w-full"
                 />
               </div>
             </div>

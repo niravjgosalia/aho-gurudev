@@ -222,12 +222,12 @@ function CompletedProj() {
                       </motion.h2>
                       <motion.p
                         variants={child}
-                        className="text-[#322F35] text-[14px] leading-normal xl:text-[1vw] mt-3 mb-5 xl:my-[1.1vw]"
+                        className="text-[#322F35] hidden lg:block text-[14px] leading-normal xl:text-[1vw] mt-3 mb-5 xl:my-[1.1vw]"
                       >
                         {item?.desc}
                       </motion.p>
                       <motion.div variants={child} className="btnwrap">
-                        <button className="flatbtn">Discover</button>
+                        <button className="mt-3 flatbtn">Discover</button>
                       </motion.div>
                     </motion.div>
                   </SwiperSlide>

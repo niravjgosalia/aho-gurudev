@@ -15,7 +15,6 @@ body::-webkit-scrollbar-thumb:hover {
   background: #5e2a29;
 }
 
-
 .flatbtn {
   @apply bg-[#5E2A29] text-[14px] lg:text-[1.2vw] xl:text-[0.8vw] text-white px-4 py-3 lg:py-[0.6vw] lg:px-[1vw] font-medium hover:bg-[#472119] transition;
 }
@@ -52,6 +51,17 @@ body::-webkit-scrollbar-thumb:hover {
 .custom-bullet-active {
   background-color: #5e2a29;
   transform: scale(1.7);
+}
+
+.lightpagination .custom-bullet {
+  background-color: #fff;
+  opacity: 0.4;
+  transition: background-color 0.3s ease;
+}
+.lightpagination .custom-bullet-active {
+  background-color: #fff;
+  opacity: 1;
+
 }
 .subtitle {
   @apply border border-[#e36226] bg-[rgba(227,98,38,0.06)] text-[#5e2a29] text-center text-[14px] xl:text-[0.9vw] font-normal leading-normal inline-block px-[10px] py-[4px] lg:px-[0.8vw] lg:py-[0.3vw];
