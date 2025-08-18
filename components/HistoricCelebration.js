@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import EventsHighlight from "./EventsHighlight";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ function HistoricCelebration() {
   const img2Ref = useRef(null);
   const eventsRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     let ctx = gsap.context(() => {
       // Initial states
       gsap.set(img2Ref.current, { clipPath: "inset(100% 0% 0% 0%)" }); // hide image2 from top
@@ -52,13 +53,13 @@ function HistoricCelebration() {
     <>
       <div ref={sectionRef} className="relative min-h-screen overflow-hidden">
         <div className="h-screen overflow-hidden">
-          <div className="md:flex my-[4vw] container px-4 mx-auto content z-10 relative">
+          <div className="md:flex my-[4vw] w-full containerx content z-10 relative">
             <div className="w-full md:w-10/12">
-              <h2 className="sec_title text-[#5E2A29] capitalize font-[700]">
+              <h2 className="heading seasons text-[#5E2A29] capitalize">
                 Historic Celebration
               </h2>
               <p
-                className={`${montserrat.className} content`}
+                className={`content`}
               >
                 Spiritual festivals, social impact initiatives. all around the
                 globe, cultural carnivals.<br /> A year-long celebration honouring
@@ -73,9 +74,8 @@ function HistoricCelebration() {
               <Image
                 src="/images/historic-celeberation.png"
                 fill
-
                 alt="image1"
-                className="object-cover"
+                className="object-cover image1"
               />
 
               {/* Second Image */}
@@ -84,7 +84,7 @@ function HistoricCelebration() {
                 src="/images/historic-celeberation2.png"
                 fill
                 alt="image2"
-                className="absolute top-0 left-0 object-cover"
+                className="absolute top-0 left-0 object-cover image2"
               />
             </div>
           </div>

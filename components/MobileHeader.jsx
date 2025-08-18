@@ -1,12 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import Button from "./layout/Button";
+import { useGSAP } from "@gsap/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 function MobileHeader({ onComplete }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [expanded, setExpanded] = useState(null);
+
   const textsRef = useRef([]);
   const progressRef = useRef(null);
   const loaderRef = useRef(null);
@@ -14,9 +19,8 @@ function MobileHeader({ onComplete }) {
   const menuBtnRef = useRef(null);
   const afterlogoposRef = useRef(null);
   const logoContainerRef = useRef(null);
-  
 
-  useEffect(() => {
+  useGSAP(() => {
     // Place logo above tag.png before animations
     const tagImg = loaderRef.current.querySelector(".logotagline");
     if (tagImg && logoWrapperRef.current) {
@@ -31,11 +35,9 @@ function MobileHeader({ onComplete }) {
         zIndex: 9999,
       });
     }
-
-  
   }, [onComplete]);
 
-  useEffect(() => {
+  useGSAP(() => {
     const tl = gsap.timeline({
       defaults: { ease: "power2.out" },
       onComplete: onComplete,
@@ -71,7 +73,7 @@ function MobileHeader({ onComplete }) {
 
     // Phase 2: Fade out loader + move logo
     tl.add(() => {
-        if (!logoWrapperRef.current || !afterlogoposRef.current) return;
+      if (!logoWrapperRef.current || !afterlogoposRef.current) return;
 
       const logoPos = logoWrapperRef.current.getBoundingClientRect();
       const finalPos = afterlogoposRef.current.getBoundingClientRect();
@@ -90,7 +92,7 @@ function MobileHeader({ onComplete }) {
         position: "fixed",
         top: logoPos.top,
         left: logoPos.left,
-        zIndex: 9999,
+        zIndex: 99,
         width: logoPos.width,
         height: logoPos.height,
       });
@@ -98,23 +100,21 @@ function MobileHeader({ onComplete }) {
       tl.to(loaderRef.current, {
         opacity: 0,
         duration: 0.6,
+        zIndex:-1,
         ease: "power2.inOut",
-      })
-        
-        .to(
-          logoWrapperRef.current,
-          {
-            x: xMove,
-            y: yMove,
-            width: targetWidth,
-            height: targetHeight,
-            duration: 1,
-            ease: "power2.inOut",
-          },
-          "<"
-        );
+      }).to(
+        logoWrapperRef.current,
+        {
+          x: xMove,
+          y: yMove,
+          width: targetWidth,
+          height: targetHeight,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "<"
+      );
     });
-    
   }, [onComplete]);
 
   return (
@@ -123,7 +123,11 @@ function MobileHeader({ onComplete }) {
         <div className="py-[10px] container px-4 mx-auto ">
           <div className="flex justify-between">
             <div>
-              <button ref={menuBtnRef} className="menubtn">
+              <button
+                ref={menuBtnRef}
+                className="menubtn"
+                onClick={() => setMenuOpen(true)}
+              >
                 <Image
                   src="/images/menubtn.png"
                   width={24}
@@ -154,26 +158,21 @@ function MobileHeader({ onComplete }) {
         </div>
       </header>
 
-      {/* Floating logo wrapper */}
-      {/* <div
-        ref={logoContainerRef}
-        className="flex items-center justify-center h-screen "
-      > */}
-        <div
-          ref={logoWrapperRef}
-          // className="fixed logo-wrapper z-50 left-[35%] top-[24%]"
-          className="fixed z-50 logo-wrapper"
-        >
-          <div className="logowrapper">
-            <Image
-              src="/logo.png"
-              className="h-auto max-w-full logo"
-              width={865}
-              height={694}
-              alt="logo"
-            />
-          </div>
+      <div
+        ref={logoWrapperRef}
+        // className="fixed logo-wrapper z-50 left-[35%] top-[24%]"
+        className="fixed z-50 logo-wrapper"
+      >
+        <div className="logowrapper">
+          <Image
+            src="/logo.png"
+            className="h-auto max-w-full logo"
+            width={865}
+            height={694}
+            alt="logo"
+          />
         </div>
+      </div>
       {/* </div> */}
 
       {/* Loader */}
@@ -230,6 +229,47 @@ function MobileHeader({ onComplete }) {
           26 September 2025 - 26 September 2026
         </div>
       </div>
+      
+      {/* Off-canvas Menu */}
+      <div className={`fixed inset-0 z-[1000] transition-all duration-300 ${menuOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+        {/* Overlay */}
+        <div 
+          className="absolute inset-0 bg-black/40"
+          onClick={() => setMenuOpen(false)}
+        />
+        
+        {/* Menu Panel */}
+        <div className={`absolute top-0 left-0 h-full max-w-full w-full md:max-w-xl bg-[#F3F2DD] shadow-lg transform transition-transform duration-300 z-[999] ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          {/* Menu content goes here */}
+          <div className="bg-[#6B2C2C] text-white py-10 px-4 flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <img src="/logo.svg" alt="Logo" width={272} height={53} className="w-[272] h-[53]" />
+             
+            </div>
+            <button onClick={() => setMenuOpen(false)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <nav className="p-4">
+            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>Events</div>
+            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>About Pujya Gurudevshri</div>
+            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>Social Impact</div>
+            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>Contact Us</div>
+          </nav>
+        </div>
+      </div>
+
+
     </>
   );
 }

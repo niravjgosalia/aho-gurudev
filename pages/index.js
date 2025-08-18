@@ -1,5 +1,12 @@
 import HistoricCelebration from "@/components/HistoricCelebration";
+import CTAcomp from "@/components/home/CTAcomp";
+import DailyOffering from "@/components/home/DailyOffering";
+import EventCalender from "@/components/home/EventCalender";
+import Gratitudetree from "@/components/home/Gratitudetree";
+import Impact from "@/components/home/Impact";
 import MobAnimationFrame1 from "@/components/home/MobAnimationFrame1";
+import SocialProjects from "@/components/home/SocialProjects";
+import Testimonials from "@/components/home/Testimonials";
 import WebAnimationFrame1 from "@/components/home/WebAnimationFrame1";
 import HomeBanner from "@/components/HomeBanner";
 import HeaderMob from "@/components/layout/HeaderMob";
@@ -32,6 +39,13 @@ const Home = () => {
             <HomeBanner startAnimation={!loading} />
             <WebAnimationFrame1 />
             <HistoricCelebration />
+            <EventCalender />
+            <SocialProjects />
+            <Testimonials />
+            <CTAcomp />
+            <Impact />
+            <DailyOffering />
+            <Gratitudetree />
             {/* Loader overlay */}
             <AnimatePresence>
               {loading && (
@@ -51,10 +65,17 @@ const Home = () => {
         </> :
           <>
             <MobileHeader />
-           
             <MobileBanner />
             <WebAnimationFrame1 />
             <HistoricCelebration />
+            <EventCalender />
+            <SocialProjects />
+            <Testimonials />
+            <CTAcomp />
+            <Impact />
+            <DailyOffering />
+
+
           </>
 
 

@@ -15,9 +15,105 @@ body::-webkit-scrollbar-thumb:hover {
   background: #5e2a29;
 }
 
+
+.flatbtn {
+  @apply bg-[#5E2A29] text-[14px] lg:text-[1.2vw] xl:text-[0.8vw] text-white px-4 py-3 lg:py-[0.6vw] lg:px-[1vw] font-medium hover:bg-[#472119] transition;
+}
+.eventcard {
+  position: relative;
+}
+.swiper-slide-active .eventcard::after {
+  position: absolute;
+  content: "";
+  border-radius: 2px;
+  background: linear-gradient(274deg, #58300d 18.86%, #a75e1d 83.99%);
+  filter: blur(20px);
+  bottom: 0vw;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 3vw;
+  z-index: -1;
+  width: 90%;
+}
+.custnav.transnav button:hover > svg path {
+  stroke: #fff;
+}
+.custom-bullet {
+  width: 6px;
+  height: 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transform: scale(1);
+}
+.custom-bullet-active {
+  background-color: #5e2a29;
+  transform: scale(1.7);
+}
+.subtitle {
+  @apply border border-[#e36226] bg-[rgba(227,98,38,0.06)] text-[#5e2a29] text-center text-[14px] xl:text-[0.9vw] font-normal leading-normal inline-block px-[10px] py-[4px] lg:px-[0.8vw] lg:py-[0.3vw];
+}
+.swiper-button-disabled {
+  opacity: 40%;
+}
+.dark.swiper-scrollbar {
+  background: #86422f4d;
+}
+.dark.swiper-scrollbar-drag {
+  background: #86422f;
+}
+
+.testimonialslider .swiper-slide:not(.testimonialslider .swiper-slide-active) {
+  opacity: 40%;
+}
+.testimonialslider
+  .swiper-slide
+  .testcont:not(.testimonialslider .swiper-slide-active .testcont) {
+  opacity: 0;
+}
+.testimonialslider .swiper-slide .testimonialitem {
+  transition: all 0.5s ease;
+}
+.testimonialslider
+  .swiper-slide
+  .testimonialitem:not(
+    .testimonialslider .swiper-slide-next .testimonialitem,
+    .testimonialslider .swiper-slide-prev .testimonialitem,
+    .testimonialslider .swiper-slide-active .testimonialitem
+  ) {
+  transform: scale(0.7);
+}
+.testimonialslider .swiper-slide-next .testimonialitem,
+.testimonialslider .swiper-slide-prev .testimonialitem {
+  transform: scale(0.77);
+}
+.testimonialslider .swiper-slide-active .testimonialitem {
+  transform: scale(0.9);
+}
+
 @media only screen and (max-width: 1024px) {
   .sm-text {
     font-size: 13px;
     line-height: 1.4;
+  }
+  .swiper-slide-active .eventcard::after {
+    display: none;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .image1 {
+    object-position: 21%;
+  }
+  .image2 {
+    object-position: 45%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .ctabtns,
+  .ctabtns button {
+    width: 100%;
   }
 }

@@ -52,7 +52,7 @@ const HeaderWeb = () => {
       initial={{ y: 0 }}
       animate={{ y: isScrolledDown ? -180 : 0 }} // Slides out when scrolling down
       transition={{ type: "spring", stiffness: 100, damping: 20 }} // Smooth motion
-      className=" fixed z-10 lg:py-[0.625vw] w-full containerx bg-[#f3f2dd]"
+      className=" fixed top-0 z-10 lg:py-[0.625vw] w-full containerx bg-[#f3f2dd]"
     >
       <div className="flex items-center justify-between h-full text-primary">
         <div>
