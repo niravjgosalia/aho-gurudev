@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import Thisweek from "../events/Thisweek";
 
 const tabs = [
-  { id: "this-week", title: "This week", content: <Thisweek /> },
+  { id: "week", title: "This week", content: <Thisweek /> },
   { id: "upcoming", title: "Upcoming", content: <Thisweek /> },
   { id: "previous", title: "Previous", content: <Thisweek /> },
-  { id: "near-me", title: "Near me", content: <Thisweek /> },
+  { id: "nearme", title: "Near me", content: <Thisweek /> },
 ];
 
 function EventCalender() {
@@ -18,6 +18,7 @@ function EventCalender() {
         <div className="headwrap">
           <h3 className="heading seasons text-[#5E2A29]">The Event Calendar</h3>
         </div>
+        
         <div className="w-full my-6 md:my-6 lg:my-[1.2vw] pb-[1vw] flex gap-5 md:gap-[2vw] text-[#5E2A29] font-medium relative overflow-x-auto whitespace-nowrap scrollbar-hide">
           {tabs.map((tab) => (
             <button
@@ -30,11 +31,14 @@ function EventCalender() {
               {tab.title}
               {activeTab === tab.id && (
                 <motion.div
-                  layoutId="underline"
-                  className="absolute left-0 bottom-0 h-[2px] bg-[#5E2A29]"
+                  layoutId="activeTabUnderline"
+                  className="absolute left-0 bottom-0 h-[2px] w-full bg-[#5E2A29]"
                   initial={false}
-                  animate={{ width: "100%" }}
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30,
+                  }}
                 />
               )}
             </button>
@@ -44,7 +48,7 @@ function EventCalender() {
         <div className="overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeTab} // ensures animation on change
+              key={activeTab}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
