@@ -660,6 +660,16 @@ const WebAnimationFrame1 = () => {
                 className=" size-full"
               />
             </div>
+            <div
+              ref={(el) => (immersive2Ref.current[1] = el)}
+              className=" lg:w-[25.615vw]"
+            >
+              <h6 className=" heading-sm seasons  capitalize mb-3">birth</h6>
+              <p className=" content">
+                {" "}
+                26th September, 1966. 5:25 AM. T.P. Shah Clinic, Mumbai.
+              </p>
+            </div>
           </div>
           <div ref={menuRef} className=" absolute w-full z-10">
             <div className=" flex justify-center items-end gap-4 lg:gap-[1.563vw]">
