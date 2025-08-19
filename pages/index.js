@@ -16,13 +16,13 @@ import Loader from "@/components/Loader";
 import MobileHeader from "@/components/MobileHeader";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from "react-responsive";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1024px)'
-  })
+    query: "(min-width: 1024px)",
+  });
 
   useEffect(() => {
     // Simulate loader completion or call your actual onComplete logic
@@ -32,12 +32,12 @@ const Home = () => {
 
   return (
     <>
-      {
-        isDesktopOrLaptop ? <>
+      {isDesktopOrLaptop ? (
+        <>
           <div className="relative">
             <Header />
             <HomeBanner startAnimation={!loading} />
-            <WebAnimationFrame1 />
+            {/* <WebAnimationFrame1 /> */}
             <HistoricCelebration />
             <EventCalender />
             <SocialProjects />
@@ -62,25 +62,22 @@ const Home = () => {
               )}
             </AnimatePresence>
           </div>
-        </> :
-          <>
-            <MobileHeader />
-            <MobileBanner />
-            <WebAnimationFrame1 />
-            <HistoricCelebration />
-            <EventCalender />
-            <SocialProjects />
-            <Testimonials />
-            <CTAcomp />
-            <Impact />
-            <DailyOffering />
-
-
-          </>
-
-
-      }
-
+        </>
+      ) : (
+        <>
+          <MobileHeader />
+          <MobileBanner />
+          {/* <WebAnimationFrame1 /> */}
+          <HistoricCelebration />
+          <EventCalender />
+          <SocialProjects />
+          <Testimonials />
+          <CTAcomp />
+          <Impact />
+          <DailyOffering />
+          <Gratitudetree />
+        </>
+      )}
     </>
   );
 };

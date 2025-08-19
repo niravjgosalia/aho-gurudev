@@ -63,7 +63,6 @@ function Gratitudetree() {
   const gratitudeRef = useRef(null);
   const gratitudeFormRef = useRef(null);
   const animationRef = useRef(null); // Ref to store our animation timeline
-  const counts = useRef(null);
 
   const {
     register,
@@ -195,7 +194,6 @@ function Gratitudetree() {
           opacity: 1,
           duration: 1,
           ease: "power3.out",
-          zIndex: 50,
         },
         "start"
       );
@@ -270,8 +268,6 @@ function Gratitudetree() {
         {
           opacity: 0,
           duration: 1,
-          zIndex: -1,
-
           ease: "power3.out",
         },
         "rev1"
@@ -373,9 +369,6 @@ function Gratitudetree() {
     });
 
     mm.add("(min-width: 104px) and (max-width: 1023px)", () => {
-      tl.to(counts.current, {
-        opacity: 0,
-      });
       // 1. Tree shrinks
       tl.to(
         treeRef.current,
@@ -408,7 +401,7 @@ function Gratitudetree() {
         birdWrapper.current,
         {
           x: "-100px",
-          y: "-265px",
+          y: "-290px",
         },
         {
           // x: "5.7vw",
@@ -563,7 +556,6 @@ function Gratitudetree() {
         {
           opacity: 0,
           duration: 1,
-          zIndex: -1,
           ease: "power3.out",
         },
         "rev1"
@@ -640,14 +632,7 @@ function Gratitudetree() {
         birdWrapper.current,
         {
           x: "-100px",
-          y: "-265px",
-        },
-        "end"
-      );
-      reverseTl.to(
-        counts.current,
-        {
-          opacity: 1,
+          y: "-290px",
         },
         "end"
       );
@@ -789,7 +774,7 @@ function Gratitudetree() {
                   </div>
                 </div>
               </div>
-              {/* <div
+              <div
                 className=" max-lg:hidden absolute  lg:top-0 opacity-0 gratitudeform"
                 ref={gratitudeFormRef}
               >
@@ -831,12 +816,12 @@ function Gratitudetree() {
                     </div>
                   </form>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
         <div
-          className="  absolute max-lg:translate-y-[80%] lg:right-[13vw] lg:top-[18vw] opacity-0 gratitudeform"
+          className=" lg:hidden absolute translate-y-[80%]  lg:top-0 opacity-0 gratitudeform"
           ref={gratitudeFormRef}
         >
           <div className="headwrap">
@@ -877,11 +862,6 @@ function Gratitudetree() {
               </div>
             </form>
           </div>
-        </div>
-        <div ref={counts} className=" absolute lg:hidden top-2">
-          <p className=" content text-[14px]">
-            124 leaves have been offered today.
-          </p>
         </div>
       </div>
 
