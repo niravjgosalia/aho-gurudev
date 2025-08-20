@@ -1,8 +1,9 @@
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,13 +28,33 @@ const WebAnimationFrame1 = () => {
   const immersive5Ref = useRef([]);
   const immersive6Ref = useRef([]);
   const immersive7Ref = useRef([]);
+  const immersive8Ref = useRef([]);
+  const immersive9Ref = useRef([]);
+
+  const [smMob, setSmMob] = useState(false);
+
+  useEffect(() => {
+    const checkHeight = () => {
+      setSmMob(window.innerHeight <= 690);
+    };
+
+    // Run on mount
+    checkHeight();
+
+    // Listen to resize events
+    window.addEventListener("resize", checkHeight);
+
+    return () => {
+      window.removeEventListener("resize", checkHeight);
+    };
+  }, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=1500%",
+        end: "+=2000%",
         scrub: true,
         pin: true,
         markers: false,
@@ -411,9 +432,11 @@ const WebAnimationFrame1 = () => {
           immersive5Ref.current[0],
           {
             opacity: 0,
+            display: "none",
           },
           {
             opacity: 1,
+            display: "flex",
           }
         )
         .to(immersive5Ref.current[3], {
@@ -473,6 +496,15 @@ const WebAnimationFrame1 = () => {
 
       //life 6
       tl.fromTo(
+        immersive6Ref.current[0],
+        {
+          display: "none",
+        },
+        {
+          display: "flex",
+        }
+      );
+      tl.fromTo(
         immersive6Ref.current[1],
         {
           y: "-8vw",
@@ -492,15 +524,14 @@ const WebAnimationFrame1 = () => {
       );
 
       //life 7
-      tl
-        .fromTo(
-          immersive7Ref.current[1],
-          {
-            y: "-8vw",
-            opacity: 0,
-          },
-          { opacity: 1 }
-        )
+      tl.fromTo(
+        immersive7Ref.current[1],
+        {
+          y: "-8vw",
+          opacity: 0,
+        },
+        { opacity: 1 }
+      )
         .fromTo(
           immersive7Ref.current[3],
           {
@@ -508,8 +539,15 @@ const WebAnimationFrame1 = () => {
             opacity: 0,
           },
           { opacity: 1 }
-        ),
-        "<";
+        )
+        .fromTo(
+          immersive7Ref.current[4],
+          {
+            y: "-8vw",
+            opacity: 0,
+          },
+          { opacity: 1 }
+        );
 
       tl.to(immersive6Ref.current[1], {
         clipPath: "inset(0% 100% 0% 0%)",
@@ -537,6 +575,138 @@ const WebAnimationFrame1 = () => {
         delay: 1,
         clipPath: "inset(0% 100% 0% 0%)",
       });
+
+      tl.to(immersive7Ref.current[3], {
+        delay: 1,
+        clipPath: "inset(0% 100% 0% 0%)",
+      });
+
+      tl.to(immersive7Ref.current[0], {
+        opacity: 0,
+        display: "none",
+      });
+
+      // life 8
+      tl.fromTo(
+        immersive8Ref.current[0],
+        {
+          display: "none",
+        },
+        {
+          display: "flex",
+        }
+      );
+      tl.fromTo(
+        immersive8Ref.current[1],
+        {
+          opacity: 0,
+          x: "-50vw",
+        },
+        { opacity: 1, x: "-31vw" },
+        "<"
+      ).fromTo(
+        immersive8Ref.current[2],
+        {
+          opacity: 0,
+          x: "10vw",
+        },
+        {
+          opacity: 1,
+          y: "-5vw",
+          x: "5vw",
+        },
+        "<"
+      );
+
+      tl.to(immersive8Ref.current[0], {
+        opacity: 0,
+        delay: 1,
+        display: "none",
+      });
+
+      //life 9
+      tl.fromTo(
+        immersive9Ref.current[0],
+        {
+          opacity: 0,
+          display: "none",
+        },
+        {
+          opacity: 1,
+          display: "flex",
+        },
+        "<"
+      );
+
+      tl.fromTo(
+        immersive9Ref.current[2],
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+        }
+      ).fromTo(
+        immersive9Ref.current[1],
+        {
+          opacity: 0,
+          y: "-10vw",
+        },
+        {
+          opacity: 1,
+        }
+      );
+
+      tl.to(immersive9Ref.current[1], {
+        opacity: 0,
+      })
+        .to(
+          immersive9Ref.current[2],
+          {
+            opacity: 0,
+          },
+          "<"
+        )
+        .fromTo(
+          immersive9Ref.current[3],
+          {
+            opacity: 0,
+            x: "-5.8vw",
+          },
+          {
+            opacity: 1,
+          }
+        );
+      tl.fromTo(
+        immersive9Ref.current[4],
+        {
+          opacity: 0,
+          y: "4vw",
+        },
+        {
+          opacity: 1,
+        }
+      );
+      tl.fromTo(
+        immersive9Ref.current[6],
+        {
+          opacity: 0,
+          y: "-10vw",
+        },
+        {
+          opacity: 1,
+        }
+      );
+      tl.fromTo(
+        immersive9Ref.current[5],
+        {
+          opacity: 0,
+          y: "8vw",
+        },
+        {
+          opacity: 1,
+        }
+      );
     });
 
     mm.add("(min-width: 104px) and (max-width: 1023px)", () => {
@@ -726,7 +896,7 @@ const WebAnimationFrame1 = () => {
           immersive1Ref.current[2],
           {
             opacity: 0,
-            top: 400,
+            top: 420,
           },
           {
             opacity: 1,
@@ -744,7 +914,7 @@ const WebAnimationFrame1 = () => {
           {
             // right: 0,
             // yPercent: 450,
-            bottom: 10,
+            bottom: 20,
             display: "block",
             opacity: 1,
           },
@@ -772,7 +942,7 @@ const WebAnimationFrame1 = () => {
         .to(
           immersive2Ref.current[1],
           {
-            top: "5%",
+            top: "10%",
             width: 315,
             height: 300,
             scale: 1,
@@ -783,7 +953,7 @@ const WebAnimationFrame1 = () => {
         .to(
           immersive2Ref.current[2],
           {
-            top: 350,
+            top: 400,
           },
           "<"
         )
@@ -801,7 +971,7 @@ const WebAnimationFrame1 = () => {
           immersive3Ref.current[1],
           {
             opacity: 0,
-            top: "5%",
+            top: "10%",
             width: 315,
             height: 300,
           },
@@ -825,7 +995,7 @@ const WebAnimationFrame1 = () => {
         .to(
           immersive3Ref.current[1],
           {
-            top: "5%",
+            top: "10%",
           },
           "<"
         )
@@ -842,18 +1012,18 @@ const WebAnimationFrame1 = () => {
             opacity: 0,
           },
           {
-            top: 350,
+            top: 400,
             opacity: 1,
           },
           "<"
         );
 
       tl.to(immersive4Ref.current[1], {
-        top: "5%",
+        top: "10%",
       }).to(
         immersive4Ref.current[2],
         {
-          top: 250,
+          top: 280,
         },
         "<"
       );
@@ -896,14 +1066,14 @@ const WebAnimationFrame1 = () => {
         .to(
           immersive5Ref.current[1],
           {
-            top: "5%",
+            top: "10%",
           },
           "<"
         )
         .to(
           immersive5Ref.current[2],
           {
-            top: 360,
+            top: 410,
             display: "block",
           },
           "<"
@@ -915,9 +1085,11 @@ const WebAnimationFrame1 = () => {
           immersive5Ref.current[0],
           {
             opacity: 0,
+            display: "none",
           },
           {
             opacity: 1,
+            display: "flex",
           }
         )
         .to(immersive5Ref.current[3], {
@@ -940,7 +1112,7 @@ const WebAnimationFrame1 = () => {
         immersive5Ref.current[4],
         {
           opacity: 0,
-          top: "5%",
+          top: "10%",
         },
         {
           opacity: 1,
@@ -950,7 +1122,7 @@ const WebAnimationFrame1 = () => {
           immersive5Ref.current[5],
           {
             opacity: 0,
-            top: 270,
+            top: 300,
             right: 20,
           },
           {
@@ -962,7 +1134,7 @@ const WebAnimationFrame1 = () => {
           immersive5Ref.current[6],
           {
             opacity: 0,
-            top: 450,
+            top: 475,
           },
           { opacity: 1 },
           "<"
@@ -972,6 +1144,224 @@ const WebAnimationFrame1 = () => {
         opacity: 0,
         display: "none",
       });
+
+      //life 6
+      tl.fromTo(
+        immersive6Ref.current[0],
+        {
+          display: "none",
+        },
+        {
+          display: "flex",
+        }
+      );
+      tl.fromTo(
+        immersive6Ref.current[1],
+        {
+          top: "10%",
+          scale: 0,
+        },
+        { scale: 1 }
+      ).fromTo(
+        immersive6Ref.current[2],
+        {
+          opacity: 0,
+          top: 410,
+        },
+        {
+          opacity: 1,
+        },
+        "<"
+      );
+
+      //life 7
+      tl.fromTo(
+        immersive7Ref.current[1],
+        {
+          top: "10%",
+
+          opacity: 0,
+        },
+        { opacity: 1 }
+      )
+        .fromTo(
+          immersive7Ref.current[3],
+          {
+            top: "10%",
+
+            opacity: 0,
+          },
+          { opacity: 1 }
+        )
+        .fromTo(
+          immersive7Ref.current[4],
+          {
+            top: "10%",
+
+            opacity: 0,
+          },
+          { opacity: 1 }
+        );
+
+      tl.to(immersive6Ref.current[1], {
+        clipPath: "inset(0% 100% 0% 0%)",
+      })
+        .fromTo(
+          immersive7Ref.current[2],
+          {
+            opacity: 0,
+            top: 410,
+          },
+          {
+            opacity: 1,
+          },
+          "<"
+        )
+        .to(
+          immersive6Ref.current[2],
+          {
+            opacity: 0,
+          },
+          "<"
+        );
+
+      tl.to(immersive7Ref.current[1], {
+        delay: 1,
+        clipPath: "inset(0% 100% 0% 0%)",
+      });
+
+      tl.to(immersive7Ref.current[3], {
+        delay: 1,
+        clipPath: "inset(0% 100% 0% 0%)",
+      });
+
+      tl.to(immersive7Ref.current[0], {
+        opacity: 0,
+        display: "none",
+      });
+
+      // life 8
+      tl.fromTo(
+        immersive8Ref.current[0],
+        {
+          display: "none",
+        },
+        {
+          display: "flex",
+        }
+      );
+      tl.fromTo(
+        immersive8Ref.current[1],
+        {
+          opacity: 0,
+          top: "-50%",
+        },
+        { opacity: 1, top: "5%" },
+        "<"
+      ).fromTo(
+        immersive8Ref.current[2],
+        {
+          opacity: 0,
+          top: 360,
+        },
+        {
+          opacity: 1,
+          top: 350,
+        },
+        "<"
+      );
+
+      tl.to(immersive8Ref.current[0], {
+        opacity: 0,
+        delay: 1,
+        display: "none",
+      });
+
+      //life 9
+      tl.fromTo(
+        immersive9Ref.current[0],
+        {
+          opacity: 0,
+          display: "none",
+        },
+        {
+          opacity: 1,
+          display: "flex",
+        },
+        "<"
+      );
+
+      tl.fromTo(
+        immersive9Ref.current[2],
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+        }
+      ).fromTo(
+        immersive9Ref.current[1],
+        {
+          opacity: 0,
+          y: -150,
+        },
+        {
+          opacity: 1,
+        }
+      );
+
+      tl.to(immersive9Ref.current[1], {
+        opacity: 0,
+      })
+        .to(
+          immersive9Ref.current[2],
+          {
+            opacity: 0,
+          },
+          "<"
+        )
+        .fromTo(
+          immersive9Ref.current[3],
+          {
+            opacity: 0,
+            left: 50,
+          },
+          {
+            opacity: 1,
+          }
+        );
+      tl.fromTo(
+        immersive9Ref.current[4],
+        {
+          opacity: 0,
+          y: 30,
+          left: 50,
+        },
+        {
+          opacity: 1,
+        }
+      );
+      tl.fromTo(
+        immersive9Ref.current[6],
+        {
+          opacity: 0,
+          y: -150,
+        },
+        {
+          opacity: 1,
+        }
+      );
+      tl.fromTo(
+        immersive9Ref.current[5],
+        {
+          opacity: 0,
+          y: 60,
+          left: 50,
+        },
+        {
+          opacity: 1,
+        }
+      );
     });
   }, []);
 
@@ -1037,15 +1427,21 @@ const WebAnimationFrame1 = () => {
         {/* TEXT */}
         <div
           ref={wordContainerRef}
-          className=" max-lg:pt-5 max-lg:h-[40%] max-lg:overflow-auto   lg:w-[25.781vw] w-full md:w-[600px] text-primary max-lg:bg-[#f3f2dd] max-lg:relative z-[1]  "
+          className={`max-lg:pt-5 ${
+            !smMob && "max-lg:h-[40%]"
+          } lg:w-[25.781vw] w-full md:w-[600px] text-primary max-lg:bg-[#f3f2dd] max-lg:relative z-[1]`}
         >
           <h6 className="capitalize heading seasons">Who is gurudev ?</h6>
-          <p className="content ">
+          <p
+            className={`content ${
+              smMob && "lenis lenis-scrolling h-[13rem]"
+            } overflow-auto`}
+          >
             {words.map((word, i) => (
               <span
                 key={i}
                 ref={(el) => (wordRefs.current[i] = el)}
-                className=" opacity-50 inline-block mr-1"
+                className=" opacity-50 inline-block mr-1 "
               >
                 {word}
               </span>
@@ -1277,12 +1673,16 @@ const WebAnimationFrame1 = () => {
 
             <div
               ref={(el) => (immersive5Ref.current[2] = el)}
-              className="hidden w-[90%] lg:w-[25.615vw] absolute z-10 lenis lenis-scrolling "
+              className="hidden w-[90%] lg:w-[25.615vw] absolute z-20 lenis lenis-scrolling "
             >
               <h6 className="mb-3 capitalize  heading-sm seasons">
                 Pratham Milan{" "}
               </h6>
-              <p className=" content text-secondary lg:h-[5vw] overflow-auto">
+              <p
+                className={`content text-secondary ${
+                  smMob && "h-[5.5rem]"
+                } lg:h-[5vw] overflow-auto`}
+              >
                 {" "}
                 At age eight, He encountered a book containing a picture of
                 Shrimad Rajchandraji. Upon beholding the image, He recalled past
@@ -1315,12 +1715,16 @@ const WebAnimationFrame1 = () => {
             </div>
             <div
               ref={(el) => (immersive5Ref.current[6] = el)}
-              className=" w-[90%] lg:w-[25.615vw] absolute z-10  "
+              className=" w-[90%] lg:w-[25.615vw] absolute z-10   "
             >
               <h6 className="mb-3 capitalize  heading-sm seasons">
                 Young Guru{" "}
               </h6>
-              <p className=" content text-secondary  overflow-auto">
+              <p
+                className={`content text-secondary  overflow-auto ${
+                  smMob && "h-[2.5rem] lenis lenis-scrolling"
+                }`}
+              >
                 {" "}
                 His divinity could barely stay hidden. His words, His actions,
                 His silence. Everything had a profundity that was felt by those
@@ -1336,7 +1740,7 @@ const WebAnimationFrame1 = () => {
           >
             <div
               ref={(el) => (immersive6Ref.current[1] = el)}
-              className=" w-[78px]  lg:w-[25.134vw] h-auto lg:h-[26.594vw] absolute z-[1]"
+              className=" w-[275px]   lg:w-[25.134vw] h-[302.71px] lg:h-[26.594vw] absolute z-[1]"
             >
               <Image
                 width={579}
@@ -1366,7 +1770,7 @@ const WebAnimationFrame1 = () => {
           >
             <div
               ref={(el) => (immersive7Ref.current[1] = el)}
-              className=" w-[78px]  lg:w-[25.134vw] h-auto lg:h-[26.594vw] absolute z-[-1]"
+              className="  w-[275px]   lg:w-[25.134vw] h-[302.71px] lg:h-[26.594vw] absolute z-[-1]"
             >
               <Image
                 width={579}
@@ -1377,7 +1781,7 @@ const WebAnimationFrame1 = () => {
             </div>
             <div
               ref={(el) => (immersive7Ref.current[3] = el)}
-              className=" w-[78px]  lg:w-[25.134vw] h-auto lg:h-[26.594vw] absolute z-[-2]"
+              className="  w-[275px]   lg:w-[25.134vw] h-[302.71px] lg:h-[26.594vw] absolute z-[-2]"
             >
               <Image
                 width={579}
@@ -1386,6 +1790,18 @@ const WebAnimationFrame1 = () => {
                 className=" size-full object-cover"
               />
             </div>
+            <div
+              ref={(el) => (immersive7Ref.current[4] = el)}
+              className="  w-[275px]   lg:w-[25.134vw] h-[302.71px] lg:h-[26.594vw] absolute z-[-3]"
+            >
+              <Image
+                width={579}
+                height={721}
+                src={"/images/home/immersion/life7-3.webp"}
+                className=" size-full object-cover"
+              />
+            </div>
+
             <div
               ref={(el) => (immersive7Ref.current[2] = el)}
               className=" w-[90%] lg:w-[25.615vw] max-lg:absolute"
@@ -1400,6 +1816,97 @@ const WebAnimationFrame1 = () => {
             </div>
           </div>
 
+          {/* life 8 */}
+          <div
+            ref={(el) => (immersive8Ref.current[0] = el)}
+            className=" absolute z-[1] flex justify-center h-full w-full sm:w-[425px] lg:w-full items-center "
+          >
+            <div
+              ref={(el) => (immersive8Ref.current[1] = el)}
+              className="  w-[275px] lg:w-[29.868vw] h-[285px] lg:h-[42.899vw] absolute "
+            >
+              <Image
+                width={574}
+                height={721}
+                src={"/images/home/immersion/life8.webp"}
+                className=" size-full object-cover"
+              />
+            </div>
+            <div
+              ref={(el) => (immersive8Ref.current[2] = el)}
+              className={` w-[90%] lg:w-[25.615vw] max-lg:absolute ${
+                smMob && "lenis lenis-scrolling"
+              }`}
+            >
+              <h6 className="mb-3 capitalize  heading-sm seasons">Study </h6>
+              <p
+                className={`content text-secondary max-lg:overflow-auto ${
+                  smMob && "max-md:h-[10rem]"
+                } `}
+              >
+                {" "}
+                Acing a five-year Bachelor’s degree in three months was easy. A
+                gold medal in M.A. (Philosophy) from the University of Mumbai
+                was easy. But completing His Ph.D. thesis on Shri Atmasiddhi
+                Shastra (Shrimad Rajchandraji’s magnum opus) was a challenge.
+                Not because it was tough, but because He couldn’t find an end to
+                the depths of the scripture.
+              </p>
+            </div>
+          </div>
+
+          {/* life 9 */}
+          <div
+            ref={(el) => (immersive9Ref.current[0] = el)}
+            className=" absolute z-[1] flex justify-center h-full w-full sm:w-[425px] lg:w-full items-center "
+          >
+            <div
+              ref={(el) => (immersive9Ref.current[1] = el)}
+              className="  w-[226px] lg:w-[21.106vw] h-[181px] lg:h-[16.876vw] absolute "
+            >
+              <Image
+                width={405}
+                height={324}
+                src={"/images/home/immersion/life9-1.webp"}
+                className=" size-full object-cover"
+              />
+            </div>
+            <p
+              ref={(el) => (immersive9Ref.current[2] = el)}
+              className=" max-lg:w-[336px] lg:text-[1.458vw] text-[16px] text-[#322F35] absolute"
+            >
+              As He offered the doctorate at the Lotus Feet of His Master, 
+            </p>
+            <p
+              ref={(el) => (immersive9Ref.current[3] = el)}
+              className=" lg:text-[1.458vw] text-[16px] text-[#322F35] absolute text-start"
+            >
+              He confessed,
+            </p>
+            <p
+              ref={(el) => (immersive9Ref.current[4] = el)}
+              className=" lg:text-[1.458vw] text-[16px] font-semibold text-[#322F35] absolute"
+            >
+              “I have stopped, not finished.”
+            </p>
+            <p
+              ref={(el) => (immersive9Ref.current[5] = el)}
+              className=" lg:text-[1.458vw] text-[16px] text-[#322F35] absolute"
+            >
+              He has not used the title since.
+            </p>
+            <div
+              ref={(el) => (immersive9Ref.current[6] = el)}
+              className="  w-[332px] lg:w-[23.646vw] h-[220.28px] lg:h-[15.677vw] absolute "
+            >
+              <Image
+                width={454}
+                height={301}
+                src={"/images/home/immersion/life9-2.webp"}
+                className=" size-full object-cover"
+              />
+            </div>
+          </div>
           <div
             ref={menuRef}
             className=" fixed px-4  w-full sm:w-[425px] lg:w-full z-10 "
@@ -1420,9 +1927,9 @@ const WebAnimationFrame1 = () => {
                   className=" lg:size-[1.979vw] cursor-pointer"
                 />
               </div>
-              <button
-                onClick={() => console.log("clicked b")}
-                className=" border border-[#5E2A29] p-[10px] lg:py-[0.521vw] lg:px-[1.042vw] text-[14px] lg:text-[0.833vw] content flex justify-center items-center gap-2"
+              <Link
+                href={"/#celebration"}
+                className=" border border-[#5E2A29] bg-[#f3f2dd] p-[10px] lg:py-[0.521vw] lg:px-[1.042vw] text-[14px] lg:text-[0.833vw] content flex justify-center items-center gap-2"
               >
                 Skip
                 <Image
@@ -1431,7 +1938,7 @@ const WebAnimationFrame1 = () => {
                   src={"/icons/arrow-down.svg"}
                   className=" lg:size-[0.938vw]"
                 />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

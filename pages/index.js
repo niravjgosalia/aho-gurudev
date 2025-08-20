@@ -37,7 +37,7 @@ const Home = () => {
           <div className="relative">
             <Header />
             <HomeBanner startAnimation={!loading} />
-            {/* <WebAnimationFrame1 /> */}
+            <WebAnimationFrame1 />
             <HistoricCelebration />
             <EventCalender />
             <SocialProjects />
@@ -47,7 +47,7 @@ const Home = () => {
             <DailyOffering />
             <Gratitudetree />
             {/* Loader overlay */}
-            <AnimatePresence>
+            {/* <AnimatePresence>
               {loading && (
                 <motion.div
                   key="loader"
@@ -60,14 +60,14 @@ const Home = () => {
                   <Loader />
                 </motion.div>
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
           </div>
         </>
       ) : (
         <>
           <MobileHeader />
           <MobileBanner />
-          {/* <WebAnimationFrame1 /> */}
+          <WebAnimationFrame1 />
           <HistoricCelebration />
           <EventCalender />
           <SocialProjects />

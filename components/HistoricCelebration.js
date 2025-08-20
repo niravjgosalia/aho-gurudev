@@ -52,7 +52,11 @@ function HistoricCelebration() {
 
   return (
     <>
-      <div ref={sectionRef} className="relative min-h-screen overflow-hidden">
+      <div
+        id="celebration"
+        ref={sectionRef}
+        className="relative min-h-screen overflow-hidden"
+      >
         <div className="h-screen overflow-hidden">
           <div className="md:flex my-[4vw] w-full containerx content z-10 relative">
             <div className="w-full md:w-10/12">
