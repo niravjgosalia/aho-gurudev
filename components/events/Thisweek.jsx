@@ -9,8 +9,8 @@ import Roundeffect from "../layout/Roundeffect";
 
 const events = [
   { title: "Festival of Bliss", img: "/images/events/event1.jpg" },
-  { title: "Spiritual Journey", img: "/images/events/event1.jpg" },
-  { title: "Global Satsang", img: "/images/events/event1.jpg" },
+  { title: "Spiritual Journey", img: "/images/events/event2.jpg" },
+  { title: "Global Satsang", img: "/images/events/event3.jpg" },
 ];
 
 function Thisweek() {
@@ -35,7 +35,7 @@ function Thisweek() {
               prevEl: ".event-swiper-button-prev",
             }}
             pagination={{
-              el: ".custom-pagination",
+              el: ".eventcal-pagination",
               clickable: true,
               bulletClass: "custom-bullet",
               bulletActiveClass: "custom-bullet-active",
@@ -225,7 +225,7 @@ function Thisweek() {
                     {/* Right Image */}
                     <div className="relative flex-1 z-[2]">
                       <Image
-                        src="/images/events/event1.jpg"
+                        src={item?.img}
                         alt="Festival Event"
                         //   fill
                         width={779}
@@ -234,12 +234,19 @@ function Thisweek() {
                       />
                     </div>
                     
-                    <div className="roundimg max-lg:-top-[15px] max-lg:left-0 max-lg:-scale-y-[1] absolute right-0 z-[3]">
+                    <div className="roundimg max-lg:-top-[13px] max-lg:left-0 absolute max-lg:-scale-y-[1] -scale-x-[1] right-0 z-[3]">
                       <Roundeffect />
                     </div>
-                    <div className="roundimg max-lg:-bottom-[13px] max-lg:right-0 absolute -scale-x-[1] left-0 z-[3]">
+                    <div className="roundimg max-lg:-bottom-[11px] max-lg:right-0 absolute  left-0 z-[3]">
                       <Roundeffect />
                     </div>
+
+                    {/* <div className="roundimg max-lg:-top-[3px] max-lg:left-0  absolute right-0 z-[3]">
+                      <Roundeffect />
+                    </div>
+                    <div className="roundimg max-lg:-bottom-[13px] max-lg:right-0 absolute  left-0 z-[3]">
+                      <Roundeffect />
+                    </div> */}
                   </div>
                 </SwiperSlide>
               );
@@ -302,7 +309,7 @@ function Thisweek() {
           </div>
         </div>
         <div className="block pb-1 lg:hidden">
-          <div className="flex justify-center gap-3 mt-4 custom-pagination"></div>
+          <div className="flex justify-center gap-3 mt-4 eventcal-pagination custom-pagination"></div>
         </div>
       </div>
     </>

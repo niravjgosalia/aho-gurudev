@@ -48,23 +48,23 @@ function DailyOffering() {
     // Inside playSequence()
     tl.current = gsap.timeline({
       defaults: { ease: "power2.inOut" },
-      onComplete: () => {
-        // Smooth fade out after sequence
-        gsap.to(images, {
-          opacity: 0,
-          duration: 2,
-          ease: "power2.inOut",
-          onComplete: () => {
-            toast.success(data.message);
-            setShowButton(true);
-            gsap.fromTo(
-              buttonRef.current,
-              { autoAlpha: 0, y: 20 },
-              { autoAlpha: 1, y: 0, duration: 1.2, ease: "power2.out" }
-            );
-          },
-        });
-      },
+      // onComplete: () => {
+      //   // Smooth fade out after sequence
+      //   gsap.to(images, {
+      //     opacity: 0,
+      //     duration: 2,
+      //     ease: "power2.inOut",
+      //     onComplete: () => {
+      //       // toast.success(data.message);
+      //       setShowButton(true);
+      //       gsap.fromTo(
+      //         buttonRef.current,
+      //         { autoAlpha: 0, y: 20 },
+      //         { autoAlpha: 1, y: 0, duration: 1.2, ease: "power2.out" }
+      //       );
+      //     },
+      //   });
+      // },
     });
 
     // Slower + more visible frames
@@ -80,7 +80,7 @@ function DailyOffering() {
   };
 
   return (
-    <div className="mt-[50px] lg:mt-[4vw] h-screen">
+    <div className="my-[50px] lg:mt-[4vw] md:h-screen">
       <ToastContainer position="bottom-right" autoClose={2000} />
 
       <div className="relative w-full h-full containerx">
