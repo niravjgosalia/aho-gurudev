@@ -21,7 +21,28 @@ const testimonialsdata = [
       "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
     name: "Narendra Modi",
     pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
+    img: "/images/testimonials/2.jpg",
+  },
+  {
+    comment:
+      "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
+    name: "Narendra Modi",
+    pos: "Prime minister of india",
+    img: "/images/testimonials/3.jpg",
+  },
+  {
+    comment:
+      "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
+    name: "Narendra Modi",
+    pos: "Prime minister of india",
+    img: "/images/testimonials/4.jpg",
+  },
+  {
+    comment:
+      "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
+    name: "Narendra Modi",
+    pos: "Prime minister of india",
+    img: "/images/testimonials/5.jpg",
   },
   {
     comment:
@@ -35,42 +56,28 @@ const testimonialsdata = [
       "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
     name: "Narendra Modi",
     pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
+    img: "/images/testimonials/2.jpg",
   },
   {
     comment:
       "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
     name: "Narendra Modi",
     pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
+    img: "/images/testimonials/3.jpg",
   },
   {
     comment:
       "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
     name: "Narendra Modi",
     pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
+    img: "/images/testimonials/4.jpg",
   },
   {
     comment:
       "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
     name: "Narendra Modi",
     pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
-  },
-  {
-    comment:
-      "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
-    name: "Narendra Modi",
-    pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
-  },
-  {
-    comment:
-      "I believe, we can understand this very well from the personality of Shrimad Rajchandraji that what we have missed out on",
-    name: "Narendra Modi",
-    pos: "Prime minister of india",
-    img: "/images/testimonials/1.jpg",
+    img: "/images/testimonials/5.jpg",
   },
 ];
 

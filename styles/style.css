@@ -61,7 +61,6 @@ body::-webkit-scrollbar-thumb:hover {
 .lightpagination .custom-bullet-active {
   background-color: #fff;
   opacity: 1;
-
 }
 .subtitle {
   @apply border border-[#e36226] bg-[rgba(227,98,38,0.06)] text-[#5e2a29] text-center text-[14px] xl:text-[0.9vw] font-normal leading-normal inline-block px-[10px] py-[4px] lg:px-[0.8vw] lg:py-[0.3vw];
@@ -103,6 +102,13 @@ body::-webkit-scrollbar-thumb:hover {
 .testimonialslider .swiper-slide-active .testimonialitem {
   transform: scale(0.9);
 }
+.overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(57, 61, 71, 0.8) 0%,
+    rgba(57, 61, 71, 0.8) 100%
+  );
+}
 
 @media only screen and (max-width: 1024px) {
   .sm-text {
@@ -112,14 +118,18 @@ body::-webkit-scrollbar-thumb:hover {
   .swiper-slide-active .eventcard::after {
     display: none;
   }
+    .eventsSlide svg .reffbg {
+    fill: rgb(40 43 51 / 82%);
+  }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 640px) {
   .image1 {
     object-position: 21%;
   }
   .image2 {
     object-position: 45%;
   }
+
 }
 @media only screen and (max-width: 480px) {
   .ctabtns,

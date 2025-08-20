@@ -14,13 +14,13 @@ function HistoricCelebration() {
   const sectionRef = useRef(null);
   const img2Ref = useRef(null);
   const eventsRef = useRef(null);
+  const overlayref = useRef(null);
 
   useGSAP(() => {
     let ctx = gsap.context(() => {
       // Initial states
       gsap.set(img2Ref.current, { clipPath: "inset(100% 0% 0% 0%)" }); // hide image2 from top
       gsap.set(eventsRef.current, { x: "100%", opacity: 0 }); // start EventsHighlight offscreen right
-
       // Timeline with ScrollTrigger
       gsap
         .timeline({
@@ -38,13 +38,29 @@ function HistoricCelebration() {
           ease: "none",
           duration: 1,
         })
+        // Step 1: Reveal second image
+        .to(
+          overlayref.current,
+          {
+            // clipPath: "inset(0% 0% 0% 0%)", // fully revealed
+            // ease: "none",
+            opacity: 1,
+            duration: 1,
+          },
+          "start"
+        )
+
         // Step 2: Slide in EventsHighlight from right
-        .to(eventsRef.current, {
-          x: "0%",
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out", // smooth animation
-        });
+        .to(
+          eventsRef.current,
+          {
+            x: "0%",
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out", // smooth animation
+          },
+          "start"
+        );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -90,6 +106,11 @@ function HistoricCelebration() {
                 alt="image2"
                 className="absolute top-0 left-0 object-cover image2"
               />
+
+              <div
+                className="absolute top-0 right-0 w-full h-full opacity-0 overlay max-sm:inline-block"
+                ref={overlayref}
+              ></div>
             </div>
           </div>
 
@@ -100,7 +121,6 @@ function HistoricCelebration() {
           >
             <EventsHighlight />
           </div>
-          <div className="w-full h-full z-1 absolute top-0 left-0 overlay bg-[linear-gradient(0deg,rgba(57,61,71,0.8),rgba(57,61,71,0.8))"></div>
         </div>
       </div>
     </>

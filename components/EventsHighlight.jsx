@@ -50,7 +50,7 @@ function EventsHighlight() {
             prevEl: ".cust-swiper-button-prev",
           }}
           pagination={{
-            el: ".custom-pagination",
+            el: ".historic-pagination",
             clickable: true,
             bulletClass: "custom-bullet",
             bulletActiveClass: "custom-bullet-active",
@@ -72,7 +72,7 @@ function EventsHighlight() {
         >
           {data &&
             data.map((item, index) => (
-              <SwiperSlide key={`event_${index}`} className="custom-slide">
+              <SwiperSlide key={`event_${index}`} className="custom-slide eventsSlide">
                 <div className="relative bg-white max-sm:pb-[20px] max-sm:px-[12px] p-3 md:p-[0.8vw]">
                   <div className="eventimg">
                     <Image
@@ -125,7 +125,7 @@ function EventsHighlight() {
                     <p className="sm-text text-[#322F35] mt-2 max-sm:pb-2">{item.desc}</p>
                   </div>
 
-                  <div className="roundimg max-lg:-top-[15px] max-lg:left-0 max-lg:-scale-y-[1] absolute right-0 z-[3]">
+                  <div className="roundimg max-lg:-top-[12px] max-lg:left-0 max-lg:-scale-y-[1] absolute right-0 z-[3]">
                     <Roundeffect transbg={true} />
                   </div>
                   <div className="roundimg max-lg:-bottom-[13px] max-lg:right-0 absolute -scale-x-[1] left-0 z-[3]">
@@ -195,7 +195,7 @@ function EventsHighlight() {
           </div>
         </div>
         <div className="block pb-1 lg:hidden">
-          <div className="flex justify-center gap-3 mt-4 custom-pagination lightpagination"></div>
+          <div className="flex justify-center gap-3 mt-4 historic-pagination lightpagination"></div>
         </div>
       </div>
     </div>
