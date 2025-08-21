@@ -53,6 +53,7 @@ function Gratitudetree() {
   // const birdPositionRef = useRef({ x: -2, y: 1.4, z: 1.2 });
   const birdPositionRef = useRef({ x: 0, y: 0, z: 0 });
   const birdRotationRef = useRef({ x: 0, y: Math.PI / -1.8, z: 0 });
+  const [viewMode, setViewMode] = useState("form");
 
   const treeRef = useRef(null);
   const svgRef = useRef(null);
@@ -662,12 +663,29 @@ function Gratitudetree() {
 
   const handleAddLeafClick = () => {
     if (!animationRef.current) return;
-
+    setViewMode("form"); // show textarea
     const { forward } = animationRef.current;
-
     forward.restart().timeScale(0.3);
     setIsAnimating(true);
-    forward.then(() => setIsAnimating(false));
+    // forward.then(() => setIsAnimating(false));
+  };
+
+  const handleReadLeafClick = () => {
+    if (!animationRef.current) return;
+
+    // Load message from localStorage
+    const savedMessage = localStorage.getItem("gratitudeMessage");
+
+    if (savedMessage) {
+      setViewMode("message"); // show saved message
+    } else {
+      setViewMode("form"); // fallback if nothing is saved
+    }
+
+    const { forward } = animationRef.current;
+    forward.restart().timeScale(0.3);
+    setIsAnimating(true);
+    // forward.then(() => setIsAnimating(false));
   };
 
   const reverseAnimation = () => {
@@ -699,6 +717,8 @@ function Gratitudetree() {
   const onSubmit = (data) => {
     console.log("Form Data:", data);
     // you can call API here
+
+    localStorage.setItem("gratitudeMessage", data.message);
 
     reverseAnimation();
   };
@@ -785,98 +805,77 @@ function Gratitudetree() {
                       onClick={handleAddLeafClick}
                       disabled={isAnimating}
                     />
-                    <Button name="Read Messages" />
+                    <Button
+                      name="Read Messages"
+                      onClick={handleReadLeafClick}
+                      disabled={isAnimating}
+                    />
                   </div>
                 </div>
               </div>
-              {/* <div
-                className=" max-lg:hidden absolute  lg:top-0 opacity-0 gratitudeform"
-                ref={gratitudeFormRef}
-              >
-                <div className="headwrap">
-                  <h3 className="text-[25px] lg:text-[1.979vw] leading-[1.4] seasons text-[#5E2A29]">
-                    What would you like to offer <br /> gurudev?
-                  </h3>
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="relative my-4 lg:my-[1.6vw] w-full mt-[]">
-                      <div
-                        className="absolute inset-0 -z-10 before:content-[''] after:content-['']
-                      before:absolute before:left-0 before:top-0 before:h-[1px] before:w-[4%] before:bg-[#5E2A29]
-                      after:absolute after:right-0 after:top-0 after:h-[1px] after:w-[34%] after:bg-[#5E2A29]"
-                      ></div>
-                      <textarea
-                        id="message"
-                        rows="5"
-                        className="w-full px-2 pt-2 lg:px-[0.6vw] lg:pt-[0.8vw] bg-transparent border border-[#5E2A29] resize-none focus:outline-none focus:ring-0 focus:ring-[#5E2A29] border-t-0"
-                        placeholder=""
-                        {...register("message", {
-                          required: "Message is required",
-                        })}
-                      ></textarea>
-                      <label
-                        htmlFor="message"
-                        className="absolute mx-[0.7vw] text-[14px] lg:text-[0.8vw] text-[#322F35] transition-all -top-[0.7vw] left-3"
-                      >
-                        Take a moment , speak from your heart
-                      </label>
-                      {errors.message && (
-                        <p className="mt-[5px] lg:mt-[0.2vw] text-[12px] lg:text-[0.7vw] text-red-500">
-                          {errors.message.message}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="btnwrapper ctabtns">
-                      <Button name="Offer Your Leaf" fill />
-                    </div>
-                  </form>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
         <div
-          className="  absolute max-lg:translate-y-[80%] lg:right-[13vw] lg:top-[18vw] opacity-0 gratitudeform"
+          className="  absolute max-lg:translate-y-[80%] max-lg:w-[90%] lg:right-[13vw] lg:top-[18vw] opacity-0 gratitudeform"
           ref={gratitudeFormRef}
         >
-          <div className="headwrap">
-            <h3 className="text-[25px] lg:text-[1.979vw] leading-[1.4] seasons text-[#5E2A29]">
-              What would you like to offer <br /> gurudev?
-            </h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="relative my-4 lg:my-[1.6vw] w-full mt-[]">
-                <div
-                  className="absolute inset-0 -z-10 before:content-[''] after:content-['']
-                      before:absolute before:left-0 before:top-0 before:h-[1px] before:w-[4%] before:bg-[#5E2A29]
-                      after:absolute after:right-0 after:top-0 after:h-[1px] after:w-[34%] after:bg-[#5E2A29]"
-                ></div>
-                <textarea
-                  id="message"
-                  rows="5"
-                  className="w-full px-2 pt-2 lg:px-[0.6vw] lg:pt-[0.8vw] bg-transparent border border-[#5E2A29] resize-none focus:outline-none focus:ring-0 focus:ring-[#5E2A29] border-t-0"
-                  placeholder=""
-                  {...register("message", {
-                    required: "Message is required",
-                  })}
-                ></textarea>
-                <label
-                  htmlFor="message"
-                  className="absolute mx-[0.7vw] text-[14px] lg:text-[0.8vw] text-[#322F35] transition-all -top-[0.7vw] left-3"
-                >
-                  Take a moment , speak from your heart
-                </label>
-                {errors.message && (
-                  <p className="mt-[5px] lg:mt-[0.2vw] text-[12px] lg:text-[0.7vw] text-red-500">
-                    {errors.message.message}
-                  </p>
-                )}
+          {viewMode === "form" ? (
+            <div className="headwrap">
+              <h3 className="text-[25px] lg:text-[1.979vw] leading-[1.4] seasons text-[#5E2A29]">
+                What would you like to offer <br /> gurudev?
+              </h3>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="relative my-4 lg:my-[1.6vw] w-full mt-[]">
+                  <div
+                    className="absolute inset-0 -z-10 before:content-[''] after:content-['']
+                      before:absolute before:left-0 before:top-0 before:h-[1px] before:w-[3%] lg:before:w-[4%] before:bg-[#5E2A29]
+                      after:absolute after:right-0 after:top-0 after:h-[1px]  after:w-[13%] lg:after:w-[34%] after:bg-[#5E2A29]"
+                  ></div>
+                  <textarea
+                    id="message"
+                    rows="5"
+                    className="w-full p-4 lg:px-[0.6vw] lg:pt-[0.8vw] bg-transparent border border-[#5E2A29] resize-none focus:outline-none focus:ring-0 focus:ring-[#5E2A29] border-t-0"
+                    placeholder=""
+                    {...register("message", {
+                      required: "Message is required",
+                    })}
+                  ></textarea>
+                  <label
+                    htmlFor="message"
+                    className="absolute mx-[0.7vw] text-[14px] lg:text-[0.8vw] text-[#322F35] transition-all top-[-8%] lg:-top-[0.7vw] left-3"
+                  >
+                    Take a moment , speak from your heart
+                  </label>
+                  {errors.message && (
+                    <p className="mt-[5px] lg:mt-[0.2vw] text-[12px] lg:text-[0.7vw] text-red-500">
+                      {errors.message.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="btnwrapper ctabtns max-lg:!w-[10rem]">
+                  <Button name="Offer Your Leaf" fill />
+                </div>
+              </form>
+            </div>
+          ) : (
+            <div className=" w-full">
+              <div className="relative my-4 lg:my-[1.6vw] w-full lg:w-[25vw] ">
+                <p className="w-full text-[16px] lg:text-[1.2vw] seasons text-start bg-transparent p-4 lg:px-[0.6vw] lg:pt-[0.8vw] min-h-[10rem] lg:min-h-[10vw] text-[#5E2A29] border  border-[#5E2A29] ">
+                  "{localStorage.getItem("gratitudeMessage")}"
+                </p>
               </div>
 
-              <div className="btnwrapper ctabtns">
-                <Button name="Offer Your Leaf" fill />
+              <div className="btnwrapper ctabtns max-lg:!w-[10rem]">
+                <Button
+                  onClick={() => reverseAnimation()}
+                  name="Go Back"
+                  fill
+                />
               </div>
-            </form>
-          </div>
+            </div>
+          )}
         </div>
         <div ref={counts} className=" absolute lg:hidden top-2">
           <p className=" content text-[14px]">
