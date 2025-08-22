@@ -3,11 +3,17 @@ import Image from "next/image";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import Button from "../layout/Button";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useAnimations, useGLTF } from "@react-three/drei";
+import {
+  OrbitControls,
+  useAnimations,
+  useTexture,
+  useGLTF,
+} from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useForm } from "react-hook-form";
+import * as THREE from "three";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,12 +22,29 @@ function BirdModel({ url, rotationRef, positionRef }) {
   const { actions } = useAnimations(animations, scene);
   const groupRef = useRef();
 
+  // Load baked texture
+  const bakedTexture = useTexture("/models/birdbake.jpg");
+  bakedTexture.flipY = false;
+  bakedTexture.colorSpace = THREE.SRGBColorSpace;
+  bakedTexture.minFilter = THREE.NearestFilter;
+  bakedTexture.magFilter = THREE.NearestFilter;
+  bakedTexture.generateMipmaps = false;
+
   useEffect(() => {
+    // Replace all materials with the baked texture
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshBasicMaterial({ map: bakedTexture });
+      }
+    });
+
+    // Play first animation if available
     if (animations.length) {
       actions[Object.keys(actions)[0]]?.play();
     }
-  }, [actions, animations]);
+  }, [actions, animations, bakedTexture, scene]);
 
+  // Sync rotation & position from refs
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.set(
@@ -746,7 +769,7 @@ function Gratitudetree() {
               <directionalLight position={[5, 5, 5]} />
               <Suspense fallback={null}>
                 <BirdModel
-                  url="/models/bird.glb"
+                  url="/models/birdNoMaterial.glb"
                   rotationRef={birdRotationRef}
                   positionRef={birdPositionRef}
                 />
