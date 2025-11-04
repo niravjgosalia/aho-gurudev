@@ -7,6 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import Image from "next/image";
+import LeftButton from "../layout/LeftButton";
+import RightButton from "../layout/RightButton";
 
 const testimonialsdata = [
   {
@@ -163,31 +165,7 @@ function Testimonials() {
       </div>
       <div className="w-full px-5 mt-5 lg:px-0 lg:mx-auto lg:w-2/12 custnav transnav">
         <div className="relative flex items-center gap-4">
-          <button className="text-center bg-transparent border border-[#5E2A29] cursor-pointer testimonial-swiper-button-prev hover:bg-[#5E2A29]">
-            <svg
-              width={24}
-              height={24}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-[36px] h-[36px] p-[8px] xl:w-[2.083vw] xl:h-[2.083vw] xl:p-[0.4vw]"
-            >
-              <path
-                d="M18.4023 11.625H4.83984"
-                stroke="#5E2A29"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M11.6211 18.4062L4.83984 11.625L11.6211 4.84375"
-                stroke="#5E2A29"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+          <LeftButton name={"testimonial-swiper-button-prev"} />
           <div
             className="hidden testimonial-swiper-scrollbar swiper-scrollbar dark lg:block"
             style={{
@@ -197,31 +175,7 @@ function Testimonials() {
               top: "auto",
             }}
           ></div>
-          <button className="text-center bg-transparent border border-[#5E2A29] cursor-pointer testimonial-swiper-button-next hover:bg-[#5E2A29]">
-            <svg
-              width={24}
-              height={24}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-[36px] h-[36px] p-[8px] xl:w-[2.083vw] xl:h-[2.083vw] xl:p-[0.4vw]"
-            >
-              <path
-                d="M5.59766 11.625H19.1602"
-                stroke="#5E2A29"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M12.3789 18.4062L19.1602 11.625L12.3789 4.84375"
-                stroke="#5E2A29"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+          <RightButton name={"testimonial-swiper-button-next"} />
         </div>
       </div>
     </div>

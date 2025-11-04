@@ -36,7 +36,6 @@ function DailyOffering() {
     }
 
     setCount(data.count);
-    
 
     setShowButton(false);
 
@@ -70,11 +69,11 @@ function DailyOffering() {
     // Slower + more visible frames
     images.forEach((img, i) => {
       // Fade in
-      tl.current.to(img, { opacity: 1, duration: 2 }, i * 3); // start every 4s
+      tl.current.to(img, { opacity: 1, duration: 1 }, i * 2); // start every 4s
 
       // Fade out previous frame with small overlap
       if (i > 0) {
-        tl.current.to(images[i - 1], { opacity: 0, duration: 2 }, i * 3 + 0.5);
+        tl.current.to(images[i - 1], { opacity: 0, duration: 1 }, i * 3 + 0.5);
       }
     });
   };

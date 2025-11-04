@@ -14,7 +14,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useForm } from "react-hook-form";
 import * as THREE from "three";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, Scrollbar, Pagination } from "swiper/modules";
+import "swiper/css";
+import RightButton from "../layout/RightButton";
+import LeftButton from "../layout/LeftButton";
 gsap.registerPlugin(ScrollTrigger);
 
 function BirdModel({ url, rotationRef, positionRef }) {
@@ -746,6 +750,21 @@ function Gratitudetree() {
     reverseAnimation();
   };
 
+  const data = [
+    {
+      message:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, quisquam cupiditate. Error, excepturi sint esse doloribus labore quae blanditiis iure omnis delectus tenetur. Maiores nulla eum ullam sunt sed quisquam blanditiis minus quos provident.",
+    },
+    {
+      message:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, quisquam cupiditate. Error, excepturi sint esse doloribus labore quae blanditiis iure omnis delectus tenetur. Maiores nulla eum ullam sunt sed quisquam blanditiis minus quos provident.",
+    },
+    {
+      message:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, quisquam cupiditate. Error, excepturi sint esse doloribus labore quae blanditiis iure omnis delectus tenetur. Maiores nulla eum ullam sunt sed quisquam blanditiis minus quos provident.",
+    },
+  ];
+
   return (
     <div className="relative h-screen overflow-hidden" ref={containerRef}>
       <div className="relative w-full sm:w-[425px] lg:w-full h-full mx-auto max-lg:flex max-lg:justify-center max-lg:text-center  ">
@@ -877,17 +896,50 @@ function Gratitudetree() {
                   )}
                 </div>
 
-                <div className="btnwrapper ctabtns max-lg:!w-[10rem]">
+                <div className="btnwrapper ctabtns max-lg:!w-[10rem] flex items-center gap-3">
+                  <Button
+                    onClick={() => reverseAnimation()}
+                    name="Go Back"
+                    fill
+                  />
                   <Button name="Offer Your Leaf" fill />
                 </div>
               </form>
             </div>
           ) : (
             <div className=" w-full">
-              <div className="relative my-4 lg:my-[1.6vw] w-full lg:w-[25vw] ">
-                <p className="w-full text-[16px] lg:text-[1.2vw] seasons text-start bg-transparent p-4 lg:px-[0.6vw] lg:pt-[0.8vw] min-h-[10rem] lg:min-h-[10vw] text-[#5E2A29] border  border-[#5E2A29] ">
-                  "{localStorage.getItem("gratitudeMessage")}"
-                </p>
+              <div className="relative mb-4 lg:mb-[1.6vw] w-full lg:w-[25vw] ">
+                <Swiper
+                  modules={[Autoplay, Navigation, Scrollbar, Pagination]}
+                  slidesPerView={1}
+                  // breakpoints={{
+                  //   0: { slidesPerView: 1, spaceBetween: 22 },
+                  //   767: { slidesPerView: 1, spaceBetween: 22 },
+                  //   1199: { slidesPerView: 1.4, spaceBetween: 22 },
+                  //   1300: { slidesPerView: 1.4, spaceBetween: 22 },
+                  // }}
+                  loop={true}
+                  navigation={{
+                    nextEl: ".tree-swiper-button-next",
+                    prevEl: ".tree-swiper-button-prev",
+                  }}
+                  autoplay={{ delay: 2500 }}
+                  spaceBetween={15}
+                  speed={1200}
+                  className=""
+                >
+                  {data?.map((item, index) => (
+                    <SwiperSlide key={`event_${index}`} className="">
+                      <p className="w-full text-[16px] lg:text-[1.2vw] seasons text-start bg-transparent p-4 lg:px-[0.6vw] lg:pt-[0.8vw] min-h-[10rem] lg:min-h-[10vw] text-[#5E2A29] border  border-[#5E2A29] ">
+                        {item?.message}
+                      </p>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+              <div className=" flex items-center justify-start gap-3 mb-4 lg:mb-[1.6vw] transnav">
+                <LeftButton name={"tree-swiper-button-prev"} />
+                <RightButton name={"tree-swiper-button-next"} />
               </div>
 
               <div className="btnwrapper ctabtns max-lg:!w-[10rem]">

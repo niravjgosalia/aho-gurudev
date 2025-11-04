@@ -35,7 +35,7 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: -1;
   width: 90%;
 }
-.custnav.transnav button:hover > svg path {
+.transnav button:hover > svg path {
   stroke: #fff;
 }
 .custom-bullet {
@@ -118,7 +118,7 @@ body::-webkit-scrollbar-thumb:hover {
   .swiper-slide-active .eventcard::after {
     display: none;
   }
-    .eventsSlide svg .reffbg {
+  .eventsSlide svg .reffbg {
     fill: rgb(40 43 51 / 82%);
   }
 }
@@ -129,7 +129,6 @@ body::-webkit-scrollbar-thumb:hover {
   .image2 {
     object-position: 45%;
   }
-
 }
 @media only screen and (max-width: 480px) {
   .ctabtns,

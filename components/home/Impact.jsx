@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 
 const locations = [
   {
@@ -12,9 +13,9 @@ const locations = [
     position: { top: "20.07%", left: "31.52%" },
     mobilePosition: { top: "67px", left: "195px" }, // for w-620 h-332
     images: [
-      { img: "/images/socialprojects/1.jpg" },
-      { img: "/images/socialprojects/2.jpg" },
-      { img: "/images/socialprojects/3.jpg" },
+      { img: "/images/socialprojects/1.jpg", link: "#" },
+      { img: "/images/socialprojects/2.jpg", link: "#" },
+      { img: "/images/socialprojects/3.jpg", link: "#" },
     ],
   },
   {
@@ -22,9 +23,9 @@ const locations = [
     position: { top: "83.81%", left: "29.56%" },
     mobilePosition: { top: "278px", left: "183px" },
     images: [
-      { img: "/images/event1.png" },
-      { img: "/images/historic-celeberation2.png" },
-      { img: "/images/historic-celeberation.png" },
+      { img: "/images/event1.png", link: "#" },
+      { img: "/images/historic-celeberation2.png", link: "#" },
+      { img: "/images/historic-celeberation.png", link: "#" },
     ],
   },
   {
@@ -32,9 +33,9 @@ const locations = [
     position: { top: "49.12%", left: "54.60%" },
     mobilePosition: { top: "163px", left: "338px" },
     images: [
-      { img: "/images/socialprojects/1.jpg" },
-      { img: "/images/socialprojects/2.jpg" },
-      { img: "/images/socialprojects/3.jpg" },
+      { img: "/images/socialprojects/1.jpg", link: "#" },
+      { img: "/images/socialprojects/2.jpg", link: "#" },
+      { img: "/images/socialprojects/3.jpg", link: "#" },
     ],
   },
   {
@@ -42,9 +43,9 @@ const locations = [
     position: { top: "60.07%", left: "79.70%" },
     mobilePosition: { top: "199px", left: "494px" },
     images: [
-      { img: "/images/socialprojects/1.jpg" },
-      { img: "/images/socialprojects/2.jpg" },
-      { img: "/images/socialprojects/3.jpg" },
+      { img: "/images/socialprojects/1.jpg", link: "#" },
+      { img: "/images/socialprojects/2.jpg", link: "#" },
+      { img: "/images/socialprojects/3.jpg", link: "#" },
     ],
   },
   {
@@ -52,9 +53,9 @@ const locations = [
     position: { top: "82.77%", left: "87.56%" },
     mobilePosition: { top: "275px", left: "543px" },
     images: [
-      { img: "/images/socialprojects/1.jpg" },
-      { img: "/images/socialprojects/2.jpg" },
-      { img: "/images/socialprojects/3.jpg" },
+      { img: "/images/socialprojects/1.jpg", link: "#" },
+      { img: "/images/socialprojects/2.jpg", link: "#" },
+      { img: "/images/socialprojects/3.jpg", link: "#" },
     ],
   },
 ];
@@ -120,12 +121,14 @@ const Marker = memo(function Marker({
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute z-50 w-[100px] h-[92px] lg:w-[7.813vw] lg:h-[5.833vw] overflow-hidden -translate-x-1/2  shadow-lg -top-11  lg:-top-[6.667vw] left-1/2"
           >
-            <Image
-              src={location.images[currentImg].img}
-              alt="popup"
-              fill
-              className="object-cover"
-            />
+            <Link href={location.images[currentImg]?.link}>
+              <Image
+                src={location.images[currentImg].img}
+                alt="popup"
+                fill
+                className="object-cover"
+              />
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
