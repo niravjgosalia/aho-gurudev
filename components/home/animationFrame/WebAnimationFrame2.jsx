@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WebAnimationFrame = () => {
+const WebAnimationFrame2 = () => {
   const containerRef = useRef();
 
   const overviewRef = useRef();
@@ -1070,7 +1070,7 @@ const WebAnimationFrame = () => {
   return (
     <>
       <div
-        id="friend"
+        id="voice"
         ref={containerRef}
         className="relative h-[100lvh] lg:h-screen overflow-hidden"
       >
@@ -1102,12 +1102,12 @@ const WebAnimationFrame = () => {
                 className=" w-[90%] lg:w-[25.615vw] max-lg:absolute "
               >
                 <h6 className="mb-3 capitalize  heading-sm seasons">
-                  FRIEND & GUIDE
+                  VOICE THAT AWAKENS
                 </h6>
                 <p className=" content text-secondary">
                   {" "}
-                  His philosophy is rich. And His love enriches. More than a
-                  guide. He is a friend. His is the way of devotion.
+                  Satsang is the rain song of the Sadguru. The gift He keeps
+                  giving. Over 40 years and counting.
                 </p>
               </div>
             </div>
@@ -1128,24 +1128,23 @@ const WebAnimationFrame = () => {
                 ref={(el) => (immersive2Ref.current[2] = el)}
                 className=" w-[90%] lg:w-[25.615vw] max-lg:absolute lenis lenis-scrolling"
               >
-                <h6 className="mb-3 capitalize  heading-sm seasons">birth</h6>
+                <h6 className="mb-3 capitalize  heading-sm seasons">
+                  Guru for the Now
+                </h6>
                 <p
                   className={`content text-secondary ${
                     smMob && "h-[5.5rem]"
                   } lg:h-[5vw] overflow-auto`}
                 >
                   {" "}
-                  We ate with Gurudev. We studied with Gurudev. We cooked with
-                  Gurudev. We cycled with Gurudev. We sang, danced, and played
-                  with Gurudev. Love turned to devotion. Devotion turned to
-                  surrender. And we were ready to put it all on the line for
-                  Him.
+                  His message is free from constraints of time, space, faith,
+                  and geography. It is a path for all, within all.
                 </p>
               </div>
             </div>
 
             {/* life 3 */}
-            {/* <div
+            <div
               ref={(el) => (immersive3Ref.current[0] = el)}
               className=" absolute z-[-1] flex justify-center h-full w-full sm:w-[425px] lg:w-full items-center "
             >
@@ -1164,13 +1163,16 @@ const WebAnimationFrame = () => {
                 ref={(el) => (immersive3Ref.current[2] = el)}
                 className=" w-[90%] lg:w-[25.615vw] max-lg:absolute"
               >
-                <h6 className="mb-3 capitalize  heading-sm seasons">family</h6>
+                <h6 className="mb-3 capitalize  heading-sm seasons">
+                  Scriptural Philosophy
+                </h6>
                 <p className=" content text-secondary">
                   {" "}
-                  A father, a mother, their two children, and their Gurudev.
+                  Gurudev has used the key of scriptures to open the treasure in
+                  His chest.
                 </p>
               </div>
-            </div> */}
+            </div>
             {/* life 4 */}
             <div
               ref={(el) => (immersive4Ref.current[0] = el)}
@@ -1193,7 +1195,7 @@ const WebAnimationFrame = () => {
                 className=" w-[90%] lg:w-[25.615vw] max-lg:absolute"
               >
                 {/* <h6 className="mb-3 capitalize  heading-sm seasons">family</h6> */}
-                <p className="content ">
+                {/* <p className="content ">
                   {lifeWord.map((word, i) => (
                     <span
                       key={i}
@@ -1203,7 +1205,7 @@ const WebAnimationFrame = () => {
                       {word}
                     </span>
                   ))}
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -1230,15 +1232,15 @@ const WebAnimationFrame = () => {
                 className="hidden w-[90%] lg:w-[25.615vw] absolute z-20 lenis lenis-scrolling "
               >
                 <h6 className="mb-3 capitalize  heading-sm seasons">
-                  Different Generations
+                  Personal Mastery
                 </h6>
                 <p
                   className={`content text-secondary ${
                     smMob && "h-[5.5rem]"
                   } lg:h-[5vw] overflow-auto`}
                 >
-                  Generations come and generations grow. Yet, each feel like He
-                  is one of their own.
+                  His personal mastery deep-dives enable a shifting of paradigms
+                  through His penetrating insight and signature wit.
                 </p>
               </div>
               <div
@@ -1463,4 +1465,4 @@ const WebAnimationFrame = () => {
   );
 };
 
-export default WebAnimationFrame;
+export default WebAnimationFrame2;

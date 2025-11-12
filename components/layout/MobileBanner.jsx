@@ -26,8 +26,11 @@ function MobileBanner() {
         },
       });
 
-      tl.to(image2Ref.current, { opacity: 1, ease: "none" }, 0.3)
-        .to(textRef.current, { y: 200, opacity: 0.8, ease: "none" }, 0);
+      tl.to(image2Ref.current, { opacity: 1, ease: "none" }, 0.3).to(
+        textRef.current,
+        { y: 200, opacity: 0.8, ease: "none" },
+        0
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -35,7 +38,6 @@ function MobileBanner() {
 
   return (
     <section ref={sectionRef} className="relative h-screen overflow-hidden ">
-     
       <div className="flex items-center justify-start h-full">
         {/* First image */}
         <Image
@@ -63,7 +65,7 @@ function MobileBanner() {
         {/* Text */}
         <h3
           ref={textRef}
-          className="bannertitle px-4 container seasons text-white absolute capitalize text-[80px] leading-[1.1] text-start"
+          className="bannertitle px-4 container seasons text-white absolute capitalize text-[80px] leading-[1.1] text-start seasons"
         >
           Aho <br /> gurudev
         </h3>

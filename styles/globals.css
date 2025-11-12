@@ -73,7 +73,10 @@ a {
   max-width: 11vw;
 }
 .seasons {
-  font-family: "The Seasons";
+  font-family: "The Seasons" !important;
+}
+.char {
+  font-family: "The Seasons" !important;
 }
 .sec_title {
   font-family: "The Seasons";

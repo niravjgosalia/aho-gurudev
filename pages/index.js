@@ -8,23 +8,35 @@ import Impact from "@/components/home/Impact";
 import MobAnimationFrame1 from "@/components/home/MobAnimationFrame1";
 import SocialProjects from "@/components/home/SocialProjects";
 import Testimonials from "@/components/home/Testimonials";
-import WebAnimationFrame from "@/components/home/WebAnimationFrame";
-import WebAnimationFrame1 from "@/components/home/WebAnimationFrame1";
+import WebAnimationFrame from "@/components/home/animationFrame/WebAnimationFrame";
+import WebAnimationFrameMain from "@/components/home/animationFrame/WebAnimationFrameMain";
 import HomeBanner from "@/components/HomeBanner";
 import HeaderMob from "@/components/layout/HeaderMob";
 import Header from "@/components/layout/HeaderWeb";
 import MobileBanner from "@/components/layout/MobileBanner";
 import Loader from "@/components/Loader";
 import MobileHeader from "@/components/MobileHeader";
+import MenuModal from "@/components/modal/MenuModal";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import WebAnimationFrame2 from "@/components/home/animationFrame/WebAnimationFrame2";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1024px)",
   });
+  const [showEnquireModal, setShowEnquireModal] = useState(false);
+
+  const onMenuOpen = () => {
+    setShowEnquireModal(true);
+    // setJobDescription(item?.jobDescription);
+  };
+
+  const onClose = () => {
+    setShowEnquireModal(false);
+  };
 
   useEffect(() => {
     // Simulate loader completion or call your actual onComplete logic
@@ -40,9 +52,10 @@ const Home = () => {
             <Header />
             <HomeBanner startAnimation={!loading} />
             <div className=" relative">
-              <WebAnimationFrame1 />
+              <WebAnimationFrameMain />
               <WebAnimationFrame />
-              <Menu />
+              {/* <WebAnimationFrame2 /> */}
+              <Menu onMenuOpen={onMenuOpen} />
             </div>
             <HistoricCelebration />
             <EventCalender />
@@ -74,9 +87,9 @@ const Home = () => {
           <MobileHeader />
           <MobileBanner />
           <div className=" relative">
-            <WebAnimationFrame1 />
+            <WebAnimationFrameMain />
             <WebAnimationFrame />
-            <Menu />
+            <Menu onMenuOpen={onMenuOpen} />
           </div>
           <HistoricCelebration />
           <EventCalender />
@@ -88,6 +101,7 @@ const Home = () => {
           <Gratitudetree />
         </>
       )}
+      <MenuModal showEnquireModal={showEnquireModal} onClose={onClose} />
     </>
   );
 };

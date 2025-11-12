@@ -3,79 +3,90 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useInView } from "react-intersection-observer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Menu = () => {
+const Menu = ({ onMenuOpen }) => {
   const menuRef = useRef(null);
   const [activeSection, setActiveSection] = useState(0);
 
   const data = [
-    {
-      num: 1,
-      title: "early years",
-      id: "early-year",
-    },
-    {
-      num: 2,
-      title: "Friend & Guide",
-      id: "friend",
-    },
-    // Add more sections as needed
+    { num: 1, title: "early years", id: "early-year" },
+    { num: 2, title: "Friend & Guide", id: "friend" },
   ];
 
   useEffect(() => {
+    const observers = [];
+
+    // Dynamically create IntersectionObservers for each section
+    data.forEach((section, index) => {
+      const target = document.getElementById(section.id);
+      if (!target) return; // skip if element not found yet
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // when section becomes visible
+            if (entry.isIntersecting) {
+              setActiveSection(index);
+            }
+          });
+        },
+        {
+          threshold: 0.5, // 50% of section visible
+        }
+      );
+
+      observer.observe(target);
+      observers.push(observer);
+    });
+
+    // Cleanup on unmount
+    return () => {
+      observers.forEach((obs) => obs.disconnect());
+    };
+  }, [data]);
+
+  // ✨ GSAP for menu appearance/disappearance
+  useEffect(() => {
     const menu = menuRef.current;
 
-    // Create a timeline for better control
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#menu-start",
-        start: "top 80%",
-        end: "bottom top",
-        toggleActions: "play none none reverse",
-      },
-    });
+    // Show when #menu-start is visible
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#menu-start",
+          start: "top 80%",
+          end: "bottom top",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .fromTo(
+        menu,
+        { y: 200, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+      );
 
-    tl.fromTo(
-      menu,
-      { y: 200, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-    );
-
-    // Hide animation when celebration section enters
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: "#celebration",
-        start: "top 80%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () =>
-          gsap.to(menu, {
-            y: 200,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.inOut",
-          }),
-        onLeaveBack: () =>
-          gsap.to(menu, {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.inOut",
-          }),
-      },
-    });
-
-    // Create ScrollTriggers for each section to track active section
-    data.forEach((section, index) => {
-      ScrollTrigger.create({
-        trigger: `#${section.id}`,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => setActiveSection(index),
-        onEnterBack: () => setActiveSection(index),
-      });
+    // Hide menu when #celebration enters view
+    ScrollTrigger.create({
+      trigger: "#celebration",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () =>
+        gsap.to(menu, {
+          y: 200,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+        }),
+      onLeaveBack: () =>
+        gsap.to(menu, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.inOut",
+        }),
     });
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -87,7 +98,7 @@ const Menu = () => {
     <div
       ref={menuRef}
       className="fixed translate-y-[200px] opacity-0 transition-all duration-700 
-                 px-4 w-full sm:w-[425px] lg:w-full z-10 right-0 bottom-5 lg:bottom-[1.5vw] 
+                 px-4 w-full sm:w-[425px] lg:w-full z-10 right-0 bottom-10 lg:bottom-[1.5vw] 
                  text-[#5E2A29]"
     >
       <div className="flex justify-between lg:justify-end items-center lg:items-end gap-4 lg:gap-[1.563vw]">
@@ -98,14 +109,16 @@ const Menu = () => {
           <p className="content lg:mx-[0.833vw] capitalize">
             {currentSection.title}
           </p>
-          <Image
-            height={40}
-            width={40}
-            src="/icons/plus-square.svg"
-            alt="plus"
-            onClick={() => console.log("clicked", currentSection)}
-            className="lg:size-[1.979vw] cursor-pointer"
-          />
+          <div onClick={onMenuOpen}>
+            <Image
+              height={40}
+              width={40}
+              src="/icons/plus-square.svg"
+              alt="plus"
+              onClick={() => console.log("clicked", currentSection)}
+              className="lg:size-[1.979vw] cursor-pointer"
+            />
+          </div>
         </div>
 
         <Link
