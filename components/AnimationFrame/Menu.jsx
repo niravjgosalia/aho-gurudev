@@ -14,6 +14,10 @@ const Menu = ({ onMenuOpen }) => {
   const data = [
     { num: 1, title: "early years", id: "early-year" },
     { num: 2, title: "Friend & Guide", id: "friend" },
+    { num: 3, title: "Voice that Awakens", id: "awakens" },
+    { num: 4, title: "Unravelling the Path", id: "unravelling" },
+    { num: 5, title: "Divine Architect", id: "divine" },
+    { num: 6, title: "Love in Motion", id: "love" },
   ];
 
   useEffect(() => {

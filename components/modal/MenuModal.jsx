@@ -6,10 +6,10 @@ const MenuModal = ({ showEnquireModal, onClose }) => {
   const data = [
     { title: "early years", id: "early-year" },
     { title: "Friend & Guide", id: "friend" },
-    { title: "Voice that Awakens", id: "friend" },
-    { title: "Unravelling the Path", id: "friend" },
-    { title: "Divine Architect", id: "friend" },
-    { title: "Love in Motion", id: "friend" },
+    { title: "Voice that Awakens", id: "awakens" },
+    { title: "Unravelling the Path", id: "unravelling" },
+    { title: "Divine Architect", id: "divine" },
+    { title: "Love in Motion", id: "love" },
   ];
   return (
     <div>

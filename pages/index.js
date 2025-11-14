@@ -21,6 +21,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import WebAnimationFrame2 from "@/components/home/animationFrame/WebAnimationFrame2";
+import AnimationFrame from "@/components/home/animationFrame/AnimationFrame";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -44,6 +45,236 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const data1 = [
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "Guru for the Now",
+      desc: "His message is free from constraints of time, space, faith, and geography.It is a path for all, within all.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Scriptural Philosophy",
+      desc: "Gurudev has used the key of scriptures to open the treasure in His chest.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life3.webp",
+      title: "Personal Mastery",
+      desc: "His personal mastery deep-dives enable a shifting of paradigms through His penetrating insight and signature wit.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "Multilingual",
+      desc: "Wisdom in regional Gujarati evolved into AI-powered multilingual breakthroughs.",
+    },
+    {
+      section: "youtube",
+      img: "/images/home/immersion/life3.webp",
+      link: "https://www.youtube.com/shorts/ukOAzI2Qfpk",
+      // title: "Multilingual",
+      // desc: "Wisdom in regional Gujarati evolved into AI-powered multilingual breakthroughs.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Outside the hall",
+      desc: "Water does not originate from the tap. The tap just channels it. His wisdom does not originate from scriptures. The text just channels His inner experience. So, satsang is never limited to a formal gathering. ",
+    },
+  ];
+  const data2 = [
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "UNRAVELLING THE PATH",
+      desc: "Sadhana is applied spirituality.The walk to freedom. The stride towards the unknown home.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Essence",
+      desc: "Look within. Love all. Eyes closed. Palms open. An inner journey extending outwards.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life3.webp",
+      title: "Introspection",
+      desc: "The first step is not a step, it’s a turn. From world to within. In the floodlight of satsang, read yourself. This is introspection.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "Contemplation",
+      desc: "With this, one realises that all the wealth acquired, objects procured, relations maintained,  have no relevance to inner joy. The twilight before dawn. Renewed strength, right direction. This is contemplation. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "Meditation",
+      desc: "Start with introspection. Stay in contemplation. And dissolve in meditation. Thrilled emptiness. Blissful nothingness.  Skyscraper state of cloudless awareness.  ",
+    },
+    {
+      section: "audio",
+      img: "/images/home/immersion/life4.png",
+      link: "https://www.youtube.com/shorts/ukOAzI2Qfpk",
+      title: "Turn Within for 30 Seconds",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Yoga",
+      desc: "Yoga is meditation with extra steps. Every asana a signal to the soul. Every breath a bridge to the breathtaking. Every flow a rendezvous between the consciousness and cosmos. ",
+    },
+  ];
+  const divine = [
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "DIVINE ARCHITECT",
+      desc: "Shrimad Rajchandra Ashram is not a cluster of buildings. It is an extension of His existence — pulsating with peace, power, and purity. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Ashram",
+      desc: "An ashram is a home for the soul.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life3.webp",
+      title: "Aerial Shots:",
+      desc: "The grand masterplan of a mystic.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "Aerial Shots:",
+      desc: "Welcome to the Spiritual Valley.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "Aerial Shots:",
+      desc: "City of stars.",
+    },
+    {
+      section: "youtube",
+      img: "/images/home/immersion/life3.webp",
+      link: "https://www.instagram.com/p/C7CEF44C_SW/",
+      title: "Virtual Tour of Ashram",
+      // desc: "Wisdom in regional Gujarati evolved into AI-powered multilingual breakthroughs.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "JM",
+      desc: "The Jimandir is a temple that stirs one’s spirit, regardless of their faith.Gurudev has defined it by experience, not by exclusion. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "GM",
+      desc: "The Gurumandir is the royal seat of Shrimad Rajchandraji.  A meditative expanse. A blissed out silence. The view is better with eyes closed. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Raj Darbar",
+      desc: "The Raj Darbar comprises of two things: The world’s tallest idol of Shrimad Rajchandraji, and the sky. Both limitless.  ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Raj Sabhagruh",
+      desc: "This iconic lantern-shaped structure is where the lighthouse of His satsang shines.Like moths drawn to a flame, seekers enter, and their doubts and delusion burn away.",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Warmth of Ashram",
+      desc: "From a distance, the ashram inspires awe.Up close, it’s an embrace of warmth. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Global Footprint",
+      desc: "200+ centres across six continents. Seekers within those centres. Exploring their centres within. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "USA Ashram",
+      desc: "Shrimad Rajchandra Ashram, USA. Sprawling across 400 acres in Poconos, Pennsylvania. Heart of wellness, wisdom, and welfare.  ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Australia Ashram",
+      desc: "An island of peace on the island continent.Ushering a new wave of inner evolution, Shrimad Rajchandra Ashram, Australia. ",
+    },
+  ];
+  const love = [
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "LOVE IN MOTION",
+      desc: "Bliss manufactured within, extends as love, care, and compassion. A true seeker cannot help but be a true sevak.  ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Gurudev’s compassion",
+      desc: "In the lineage of the enlightened, a prodigy emerges. A saviour to those suffering, a light in these modern dark ages. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life3.webp",
+      title: "SRHRC",
+      desc: "For those with less than nothing, nothing less than the best. Shrimad Rajchandra Hospital and Research Centre — a 250-bed multi-specialty charitable institute, treating patients from over 500 villages. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "SRSU Shots",
+      desc: "Where schools were nothing more than four walls and a leaking roof, children can now dream to become what they’re meant to be. The sky of Dharampur is filled with aspirations. Because the land of Dharampur has Shrimad Rajchandra Sarvamangal University. ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life1.webp",
+      title: "SRJ",
+      desc: "A breakthrough in animal care, a revolution in animal wellness. A hospital, a shelter, an experience centre, and a veterinary college, in a 40-acre care-for-life facility. Capacity for 2,000. Small and big animals. No euthanasia. The phrase — to treat someone like an animal — changes its meaning at Shrimad Rajchandra Jivamaitridham. ",
+      hugeContent: true,
+    },
+
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "SRCEW",
+      desc: "Behind every flourishing society are empowered women. And behind the women of Dharampur is Shrimad Rajchandra Centre of Excellence for Women. A lab of innovation. A school of learning. A building for building confidence. A home for holistic development. ",
+      hugeContent: true,
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Global Outreach & Volunteer Army",
+      desc: "As thousands around the world form this growing movement, their smallest act of service becomes an offering at the altar of compassion.  ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Raj Darbar",
+      desc: "Mission Africa: Rise Of A New Dawn. A 360° community development programme 50,000+ plates filled every single day. 175+ institutes opening doors to a better life. 16+ countries advancing towards a better future.  ",
+    },
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "Smiling beneficiary faces",
+      desc: "Gurudev was here.",
+    },
+  ];
+
   return (
     <>
       {isDesktopOrLaptop ? (
@@ -54,6 +285,10 @@ const Home = () => {
             <div className=" relative">
               <WebAnimationFrameMain />
               <WebAnimationFrame />
+              <AnimationFrame id={"awakens"} data={data1} />
+              <AnimationFrame id={"unravelling"} data={data2} />
+              <AnimationFrame id={"divine"} data={divine} />
+              <AnimationFrame id={"love"} data={love} />
               {/* <WebAnimationFrame2 /> */}
               <Menu onMenuOpen={onMenuOpen} />
             </div>
@@ -89,6 +324,11 @@ const Home = () => {
           <div className=" relative">
             <WebAnimationFrameMain />
             <WebAnimationFrame />
+            <AnimationFrame id={"awakens"} data={data1} />
+            <AnimationFrame id={"awakens"} data={data1} />
+            <AnimationFrame id={"unravelling"} data={data2} />
+            <AnimationFrame id={"divine"} data={divine} />
+            <AnimationFrame id={"love"} data={love} />
             <Menu onMenuOpen={onMenuOpen} />
           </div>
           <HistoricCelebration />

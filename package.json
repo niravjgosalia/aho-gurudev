@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.19",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^9.65.0",
     "@react-three/fiber": "^8.13.4",
