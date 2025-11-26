@@ -45,7 +45,13 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const data1 = [
+  const voices = [
+    {
+      section: "normal",
+      img: "/images/home/immersion/life2.webp",
+      title: "VOICE THAT AWAKENS",
+      desc: "Satsang is the rain song of the Sadguru. The gift He keeps giving. Over 40 years and counting. ",
+    },
     {
       section: "normal",
       img: "/images/home/immersion/life1.webp",
@@ -169,13 +175,13 @@ const Home = () => {
     {
       section: "normal",
       img: "/images/home/immersion/life2.webp",
-      title: "JM",
+      title: "Jimandir",
       desc: "The Jimandir is a temple that stirs one’s spirit, regardless of their faith.Gurudev has defined it by experience, not by exclusion. ",
     },
     {
       section: "normal",
       img: "/images/home/immersion/life2.webp",
-      title: "GM",
+      title: "Gurumandir",
       desc: "The Gurumandir is the royal seat of Shrimad Rajchandraji.  A meditative expanse. A blissed out silence. The view is better with eyes closed. ",
     },
     {
@@ -219,7 +225,8 @@ const Home = () => {
     {
       section: "normal",
       img: "/images/home/immersion/life1.webp",
-      title: "LOVE IN MOTION",
+      title:
+        "LOVE IN MOTION - chapter we need to redo as content is more and its not fitting well",
       desc: "Bliss manufactured within, extends as love, care, and compassion. A true seeker cannot help but be a true sevak.  ",
     },
     {
@@ -231,19 +238,21 @@ const Home = () => {
     {
       section: "normal",
       img: "/images/home/immersion/life3.webp",
-      title: "SRHRC",
+      title: "SRHRC - Shrimad Rajchandra Hospital and Research Centre",
       desc: "For those with less than nothing, nothing less than the best. Shrimad Rajchandra Hospital and Research Centre — a 250-bed multi-specialty charitable institute, treating patients from over 500 villages. ",
+      hugeContent: true,
     },
     {
       section: "normal",
       img: "/images/home/immersion/life1.webp",
-      title: "SRSU Shots",
+      title: "SRSU - Shrimad Rajchandra Sarvamangal University",
       desc: "Where schools were nothing more than four walls and a leaking roof, children can now dream to become what they’re meant to be. The sky of Dharampur is filled with aspirations. Because the land of Dharampur has Shrimad Rajchandra Sarvamangal University. ",
+      hugeContent: true,
     },
     {
       section: "normal",
       img: "/images/home/immersion/life1.webp",
-      title: "SRJ",
+      title: "SRJ - Shrimad Rajchandra Jivamaitridham",
       desc: "A breakthrough in animal care, a revolution in animal wellness. A hospital, a shelter, an experience centre, and a veterinary college, in a 40-acre care-for-life facility. Capacity for 2,000. Small and big animals. No euthanasia. The phrase — to treat someone like an animal — changes its meaning at Shrimad Rajchandra Jivamaitridham. ",
       hugeContent: true,
     },
@@ -251,7 +260,7 @@ const Home = () => {
     {
       section: "normal",
       img: "/images/home/immersion/life2.webp",
-      title: "SRCEW",
+      title: "SRCEW - Shrimad Rajchandra Centre of Excellence for Women",
       desc: "Behind every flourishing society are empowered women. And behind the women of Dharampur is Shrimad Rajchandra Centre of Excellence for Women. A lab of innovation. A school of learning. A building for building confidence. A home for holistic development. ",
       hugeContent: true,
     },
@@ -285,7 +294,7 @@ const Home = () => {
             <div className=" relative">
               <WebAnimationFrameMain />
               <WebAnimationFrame />
-              <AnimationFrame id={"awakens"} data={data1} />
+              <AnimationFrame id={"awakens"} data={voices} />
               <AnimationFrame id={"unravelling"} data={data2} />
               <AnimationFrame id={"divine"} data={divine} />
               <AnimationFrame id={"love"} data={love} />
@@ -324,8 +333,8 @@ const Home = () => {
           <div className=" relative">
             <WebAnimationFrameMain />
             <WebAnimationFrame />
-            <AnimationFrame id={"awakens"} data={data1} />
-            <AnimationFrame id={"awakens"} data={data1} />
+            <AnimationFrame id={"awakens"} data={voices} />
+            <AnimationFrame id={"awakens"} data={voices} />
             <AnimationFrame id={"unravelling"} data={data2} />
             <AnimationFrame id={"divine"} data={divine} />
             <AnimationFrame id={"love"} data={love} />
