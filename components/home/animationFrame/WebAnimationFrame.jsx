@@ -1093,7 +1093,8 @@ const WebAnimationFrame = () => {
                 <Image
                   height={872}
                   width={720}
-                  src={"/images/home/immersion/life1.webp"}
+                  // src={"/images/home/immersion/life1.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full"
                 />
               </div>
@@ -1120,7 +1121,8 @@ const WebAnimationFrame = () => {
                 <Image
                   height={513}
                   width={574}
-                  src={"/images/home/immersion/life2.webp"}
+                  // src={"/images/home/immersion/life2.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
@@ -1158,7 +1160,8 @@ const WebAnimationFrame = () => {
                 <Image
                   height={513}
                   width={574}
-                  src={"/images/home/immersion/life3.webp"}
+                  // src={"/images/home/immersion/life3.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full"
                 />
               </div>
@@ -1187,7 +1190,8 @@ const WebAnimationFrame = () => {
                 <Image
                   height={293}
                   width={572}
-                  src={"/images/home/immersion/life4.png"}
+                  // src={"/images/home/immersion/life4.png"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full"
                 />
               </div>
@@ -1224,7 +1228,8 @@ const WebAnimationFrame = () => {
                   height={574}
                   width={449}
                   ref={(el) => (immersive5Ref.current[3] = el)}
-                  src={"/images/home/immersion/life5-1.webp"}
+                  // src={"/images/home/immersion/life5-1.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover object-top"
                 />
               </div>
@@ -1252,7 +1257,8 @@ const WebAnimationFrame = () => {
                 <Image
                   height={693}
                   width={1081}
-                  src={"/images/home/immersion/life5-2.webp"}
+                  // src={"/images/home/immersion/life5-2.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
@@ -1263,7 +1269,8 @@ const WebAnimationFrame = () => {
                 <Image
                   height={367}
                   width={419}
-                  src={"/images/home/immersion/life5-3.webp"}
+                  // src={"/images/home/immersion/life5-3.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
@@ -1296,7 +1303,8 @@ const WebAnimationFrame = () => {
                 <Image
                   width={579}
                   height={721}
-                  src={"/images/home/immersion/life6.webp"}
+                  // src={"/images/home/immersion/life6.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
@@ -1328,7 +1336,8 @@ const WebAnimationFrame = () => {
                 <Image
                   width={579}
                   height={721}
-                  src={"/images/home/immersion/life7-1.webp"}
+                  // src={"/images/home/immersion/life7-1.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
@@ -1339,7 +1348,8 @@ const WebAnimationFrame = () => {
                 <Image
                   width={579}
                   height={721}
-                  src={"/images/home/immersion/life7-2.webp"}
+                  // src={"/images/home/immersion/life7-2.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
@@ -1350,7 +1360,8 @@ const WebAnimationFrame = () => {
                 <Image
                   width={579}
                   height={721}
-                  src={"/images/home/immersion/life7-3.webp"}
+                  // src={"/images/home/immersion/life7-3.webp"}
+                  src={"/images/home/immersion/alt.png"}
                   className=" size-full object-cover"
                 />
               </div>
