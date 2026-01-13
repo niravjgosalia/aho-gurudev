@@ -158,16 +158,19 @@ const AnimationFrame = ({ id, data }) => {
               <div className=" w-[275px]   lg:w-[75.134vw] h-full seasons lg:flex lg:gap-[5vw] lg:items-center ">
                 <div
                   ref={(el) => (imageStartRef.current[index] = el)}
-                  className="  w-full  h-[302.71px] lg:h-[26.594vw] "
+                  className="  w-full  h-[302.71px] lg:h-auto lg:w-[45vw] "
                 >
                   <Image
-                    width={579}
+                    width={979}
                     height={721}
                     src={item?.img}
                     className=" size-full object-cover"
                   />
                 </div>
-                <div ref={(el) => (textStartRef.current[index] = el)}>
+                <div
+                  ref={(el) => (textStartRef.current[index] = el)}
+                  className=" lg:w-[25vw]"
+                >
                   <h6 className="my-3 capitalize  heading-sm season text-[#5E2A29] text-center lg:text-start">
                     {item?.title}
                   </h6>

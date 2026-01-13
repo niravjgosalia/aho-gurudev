@@ -47,7 +47,7 @@ const Home = () => {
 
   const voices = [
     {
-      section: "normal2",
+      section: "normal",
       img: "/images/home/immersion/alt.png",
       title: "VOICE THAT AWAKENS",
       desc: "Satsang is the rain song of the Sadguru. The gift He keeps giving. Over 40 years and counting. ",
@@ -136,31 +136,31 @@ const Home = () => {
   ];
   const divine = [
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "DIVINE ARCHITECT",
       desc: "Shrimad Rajchandra Ashram is not a cluster of buildings. It is an extension of His existence — pulsating with peace, power, and purity. ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Ashram",
       desc: "An ashram is a home for the soul.",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Aerial Shots:",
       desc: "The grand masterplan of a mystic.",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Aerial Shots:",
       desc: "Welcome to the Spiritual Valley.",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Aerial Shots:",
       desc: "City of stars.",
@@ -173,49 +173,49 @@ const Home = () => {
       // desc: "Wisdom in regional Gujarati evolved into AI-powered multilingual breakthroughs.",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Jimandir",
       desc: "The Jimandir is a temple that stirs one’s spirit, regardless of their faith.Gurudev has defined it by experience, not by exclusion. ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/gurumandir.jpg",
       title: "Gurumandir",
       desc: "The Gurumandir is the royal seat of Shrimad Rajchandraji.  A meditative expanse. A blissed out silence. The view is better with eyes closed. ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Raj Darbar",
       desc: "The Raj Darbar comprises of two things: The world’s tallest idol of Shrimad Rajchandraji, and the sky. Both limitless.  ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Raj Sabhagruh",
       desc: "This iconic lantern-shaped structure is where the lighthouse of His satsang shines.Like moths drawn to a flame, seekers enter, and their doubts and delusion burn away.",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Warmth of Ashram",
       desc: "From a distance, the ashram inspires awe.Up close, it’s an embrace of warmth. ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Global Footprint",
       desc: "200+ centres across six continents. Seekers within those centres. Exploring their centres within. ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/usa-ashram.jpg",
       title: "USA Ashram",
       desc: "Shrimad Rajchandra Ashram, USA. Sprawling across 400 acres in Poconos, Pennsylvania. Heart of wellness, wisdom, and welfare.  ",
     },
     {
-      section: "normal",
+      section: "normal2",
       img: "/images/home/immersion/alt.png",
       title: "Australia Ashram",
       desc: "An island of peace on the island continent.Ushering a new wave of inner evolution, Shrimad Rajchandra Ashram, Australia. ",
