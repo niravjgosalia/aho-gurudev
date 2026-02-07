@@ -84,7 +84,11 @@ const AnimationFrame = ({ id, data }) => {
                   />
                 </div>
                 <div ref={(el) => (textStartRef.current[index] = el)}>
-                  <h6 className="my-3 capitalize  heading-sm season text-[#5E2A29] text-center lg:text-start">
+                  <h6
+                    className={`my-3 capitalize ${
+                      item?.headingSm === true && " max-lg:!text-[20px]"
+                    } heading-sm season text-[#5E2A29] text-center lg:text-start`}
+                  >
                     {item?.title}
                   </h6>
                   <p

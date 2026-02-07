@@ -74,10 +74,10 @@ function HistoricCelebration() {
         className="relative min-h-screen overflow-hidden"
       >
         <div className="h-screen overflow-hidden">
-          <div className="md:flex my-[4vw] w-full containerx content z-10 relative">
-            <div className="w-full md:w-10/12">
-              <h2 className="heading seasons text-[#5E2A29] capitalize">
-                Historic Celebration
+          <div className="md:flex my-[4vw] w-full containerx content z-10 max-lg:h-[40%] relative">
+            <div className="w-full md:w-10/12 ">
+              <h2 className="heading seasons text-[#5E2A29] capitalize max-lg:pt-20">
+                aho guru kalyan
               </h2>
               <p className={`content`}>
                 Spiritual festivals, social impact initiatives. all around the
@@ -88,14 +88,20 @@ function HistoricCelebration() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative w-full h-screen imgwrapper">
+          <div className="relative h-full">
+            <div className="relative w-full h-[60%] lg:h-screen imgwrapper">
               {/* First Image */}
               <Image
                 src="/images/historic-celeberation.png"
                 fill
                 alt="image1"
-                className="object-cover image1"
+                className="object-cover image1 max-lg:hidden"
+              />
+              <Image
+                src="/images/historic/1.png"
+                fill
+                alt="image1"
+                className="object-cover image1 lg:hidden"
               />
 
               {/* Second Image */}
@@ -104,7 +110,14 @@ function HistoricCelebration() {
                 src="/images/historic-celeberation2.png"
                 fill
                 alt="image2"
-                className="absolute top-0 left-0 object-cover image2"
+                className="absolute top-0 left-0 object-cover image2 max-lg:hidden"
+              />
+              <Image
+                ref={img2Ref}
+                src="/images/historic/2.png"
+                fill
+                alt="image2"
+                className="absolute top-0 left-0 object-cover image2 lg:hidden"
               />
 
               <div

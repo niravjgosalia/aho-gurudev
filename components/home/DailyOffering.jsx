@@ -8,7 +8,7 @@ const frames = [
   "/images/frames/1.png",
   "/images/frames/2.png",
   "/images/frames/3.png",
-  "/images/frames/5.png",
+  // "/images/frames/5.png",
 ];
 
 function DailyOffering() {

@@ -49,7 +49,7 @@ a {
   @apply text-[36px] lg:text-[5.208vw] lg:leading-none;
 }
 .heading-sm {
-  @apply text-[36px] lg:text-[1.979vw] font-bold;
+  @apply text-[26px] lg:text-[1.979vw] font-bold;
 }
 
 .content {

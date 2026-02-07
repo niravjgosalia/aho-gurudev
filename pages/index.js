@@ -227,6 +227,8 @@ const Home = () => {
       img: "/images/home/immersion/alt.png",
       title:
         "LOVE IN MOTION - chapter we need to redo as content is more and its not fitting well",
+      headingSm: true,
+
       desc: "Bliss manufactured within, extends as love, care, and compassion. A true seeker cannot help but be a true sevak.  ",
     },
     {
@@ -310,7 +312,7 @@ const Home = () => {
             <DailyOffering />
             <Gratitudetree />
             {/* Loader overlay */}
-            <AnimatePresence>
+            {/* <AnimatePresence>
               {loading && (
                 <motion.div
                   key="loader"
@@ -323,7 +325,7 @@ const Home = () => {
                   <Loader />
                 </motion.div>
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
           </div>
         </>
       ) : (
