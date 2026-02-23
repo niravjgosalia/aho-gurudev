@@ -11,7 +11,7 @@ const HeaderWeb = () => {
   const links = [
     {
       name: "Events",
-      link: "#",
+      link: "/events/0",
     },
     {
       name: "About Gurudevshri",

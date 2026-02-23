@@ -5,6 +5,7 @@ import { Montserrat } from "next/font/google";
 import Button from "./layout/Button";
 import { useGSAP } from "@gsap/react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -100,7 +101,7 @@ function MobileHeader({ onComplete }) {
       tl.to(loaderRef.current, {
         opacity: 0,
         duration: 0.6,
-        zIndex:-1,
+        zIndex: -1,
         ease: "power2.inOut",
       }).to(
         logoWrapperRef.current,
@@ -229,22 +230,35 @@ function MobileHeader({ onComplete }) {
           26 September 2025 - 26 September 2026
         </div>
       </div>
-      
+
       {/* Off-canvas Menu */}
-      <div className={`fixed inset-0 z-[1000] transition-all duration-300 ${menuOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+      <div
+        className={`fixed inset-0 z-[1000] transition-all duration-300 ${
+          menuOpen ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
         {/* Overlay */}
-        <div 
+        <div
           className="absolute inset-0 bg-black/40"
           onClick={() => setMenuOpen(false)}
         />
-        
+
         {/* Menu Panel */}
-        <div className={`absolute top-0 left-0 h-full max-w-full w-full md:max-w-xl bg-[#F3F2DD] shadow-lg transform transition-transform duration-300 z-[999] ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div
+          className={`absolute top-0 left-0 h-full max-w-full w-full md:max-w-xl bg-[#F3F2DD] shadow-lg transform transition-transform duration-300 z-[999] ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
           {/* Menu content goes here */}
           <div className="bg-[#6B2C2C] text-white py-10 px-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="Logo" width={272} height={53} className="w-[272] h-[53]" />
-             
+              <img
+                src="/logo.svg"
+                alt="Logo"
+                width={272}
+                height={53}
+                className="w-[272] h-[53]"
+              />
             </div>
             <button onClick={() => setMenuOpen(false)}>
               <svg
@@ -255,21 +269,40 @@ function MobileHeader({ onComplete }) {
                 stroke="currentColor"
                 className="w-6 h-6"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
-          
+
           <nav className="p-4">
-            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>Events</div>
-            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>About Pujya Gurudevshri</div>
-            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>Social Impact</div>
-            <div className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}>Contact Us</div>
+            <Link
+              href={"/events/0"}
+              className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
+            >
+              Events
+            </Link>
+            <div
+              className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
+            >
+              About Pujya Gurudevshri
+            </div>
+            <div
+              className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
+            >
+              Social Impact
+            </div>
+            <div
+              className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
+            >
+              Contact Us
+            </div>
           </nav>
         </div>
       </div>
-
-
     </>
   );
 }

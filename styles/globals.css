@@ -34,6 +34,9 @@ a {
 .containerx {
   @apply px-5 lg:px-[4.167vw];
 }
+.containery {
+  @apply py-5 lg:py-[4.167vw];
+}
 
 .text-primary {
   @apply text-[#5E2A29];
@@ -54,6 +57,9 @@ a {
 
 .content {
   @apply text-[16px] lg:text-[1.354vw] font-normal;
+}
+.content-sm {
+  @apply text-[13px] md:text-[16px] lg:text-[1vw];
 }
 
 .custom-shadow {
@@ -158,4 +164,13 @@ a {
   .sec_title {
     font-size: 28px;
   }
+}
+
+.influence .swiper-slide {
+  transition: transform 1.2s ease, opacity 1.2s ease;
+}
+
+.influence .swiper-slide-next {
+  transform: scale(0.7) !important;
+  opacity: 0.5 !important;
 }

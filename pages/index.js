@@ -312,7 +312,7 @@ const Home = () => {
             <DailyOffering />
             <Gratitudetree />
             {/* Loader overlay */}
-            {/* <AnimatePresence>
+            <AnimatePresence>
               {loading && (
                 <motion.div
                   key="loader"
@@ -325,7 +325,7 @@ const Home = () => {
                   <Loader />
                 </motion.div>
               )}
-            </AnimatePresence> */}
+            </AnimatePresence>
           </div>
         </>
       ) : (
