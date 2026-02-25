@@ -46,6 +46,27 @@ const Brochure = () => {
             </div>
           </div>
         </div>
+        <div>
+          <h6 className="text-primary seasons heading-sm mt-10">
+            Download Event Details
+          </h6>
+          <p className=" content-sm">
+            Find the details of the event in the detailed brochure
+          </p>
+          <div className=" bg-white p-3 mt-2">
+            <Image
+              width={330}
+              height={195}
+              src={"/images/events/brochure.png"}
+            />
+            <Link href={"#"} className=" flex justify-end gap-2 mt-2">
+              <p className=" w-fit content-sm border-b text-primary border-[#5E2A29]">
+                Download Brochure
+              </p>
+              <Image width={28} height={28} src={"/icons/download.svg"} />
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

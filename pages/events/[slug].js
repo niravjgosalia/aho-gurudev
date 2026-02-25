@@ -13,6 +13,8 @@ import Brochure from "@/components/events/Brochure";
 import ContactForm from "@/components/events/ContactForm";
 import Faq from "@/components/events/Faq";
 import MobileHeader from "@/components/MobileHeader";
+import VideoHighlight from "@/components/events/VideoHighlight";
+import Schedule2 from "@/components/events/Schedule2";
 
 const eventDetail = () => {
   return (
@@ -26,8 +28,8 @@ const eventDetail = () => {
 
       <CommonBanner />
       <About />
-      <MajorHighlights />
-      <Schedule />
+      <VideoHighlight />
+      <Schedule2 />
       <Registration />
       <Accomodation />
       <Laabhs />

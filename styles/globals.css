@@ -174,3 +174,10 @@ a {
   transform: scale(0.7) !important;
   opacity: 0.5 !important;
 }
+
+.video-highlight .swiper-pagination-bullet {
+  background-color: #5e2a29 !important;
+}
+.video-highlight .swiper-pagination-bullet-active {
+  scale: 1.2 !important;
+}
