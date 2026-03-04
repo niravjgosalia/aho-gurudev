@@ -62,10 +62,10 @@ const Registration = () => {
                 <td className=" text-[#5E2A29] font-semibold py-4 lg:py-[1vw] lg:text-center">
                   {item?.include}
                 </td>
-                <td className=" font-light lg:text-center">
+                <td className="text-[#5E2A29] !font-light lg:text-center content">
                   {item?.allSession}
                 </td>
-                <td className=" font-light lg:text-center">
+                <td className="text-[#5E2A29] !font-light lg:text-center content">
                   {item?.dailySession}
                 </td>
               </tr>

@@ -59,8 +59,8 @@ const Brochure = () => {
               height={195}
               src={"/images/events/brochure.png"}
             />
-            <Link href={"#"} className=" flex justify-end gap-2 mt-2">
-              <p className=" w-fit content-sm border-b text-primary border-[#5E2A29]">
+            <Link href={"#"} className=" flex justify-end gap-2 mt-4">
+              <p className=" w-fit content !font-medium  border-b text-primary border-[#5E2A29]">
                 Download Brochure
               </p>
               <Image width={28} height={28} src={"/icons/download.svg"} />

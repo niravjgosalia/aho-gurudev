@@ -88,12 +88,12 @@ const VideoHighlight = () => {
           {data?.map((item, i) => {
             return (
               <SwiperSlide key={`schedule${i}`} className="pb-10 lg:pb-[4.5vw]">
-                <div className=" bg-white p-4 lg:py-[1.25vw] lg:px-[2vw] lg:w-[29.896vw] text-primary flex justify-between items-center shadow-xl ">
-                  <div className=" text-primary">
+                <div className=" bg-white  p-4 lg:py-[1.25vw] lg:px-[2vw] lg:w-[29.896vw] text-primary flex justify-between items-center shadow-xl ">
+                  <div className="max-lg:w-16 text-primary">
                     <p className="content seasons">{item?.month}</p>
                     <p className="heading-sm seasons">{item?.date}</p>
                   </div>
-                  <p className=" content lg:w-[16.938vw] lg:px-[1.5vw] border-l border-[#5E2A29]">
+                  <p className=" content px-4 lg:w-[16.938vw] lg:px-[1.5vw] border-l border-[#5E2A29]">
                     {item?.title}
                   </p>
                   <div>

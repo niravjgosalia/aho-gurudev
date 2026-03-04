@@ -56,7 +56,7 @@ a {
 }
 
 .content {
-  @apply text-[16px] lg:text-[1.354vw] font-normal;
+  @apply text-[16px] lg:text-[1.354vw];
 }
 .content-sm {
   @apply text-[13px] md:text-[16px] lg:text-[1vw];
@@ -167,7 +167,9 @@ a {
 }
 
 .influence .swiper-slide {
-  transition: transform 1.2s ease, opacity 1.2s ease;
+  transition:
+    transform 1.2s ease,
+    opacity 1.2s ease;
 }
 
 .influence .swiper-slide-next {

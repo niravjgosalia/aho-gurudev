@@ -54,7 +54,10 @@ const ContactForm = () => {
               Write about your query
             </span>
           </div>
-          <div className=" flex justify-end w-full">
+          <div className=" lg:hidden w-full">
+            <Button name="Submit" fill width={true} />
+          </div>
+          <div className=" max-lg:hidden lg:flex justify-end w-full">
             <Button name="Submit" fill />
           </div>
         </form>

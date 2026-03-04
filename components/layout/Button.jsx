@@ -1,11 +1,11 @@
 import React from "react";
 
-const Button = ({ name, fill, onClick, disabled = false }) => {
+const Button = ({ name, fill, onClick, width, disabled = false }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`border-[1.5px] text-nowrap border-[#5E2A29] py-[8px] px-[10px] lg:py-[0.521vw] lg:px-[1.042vw] relative after:absolute after:z-[1] after:h-full after:left-0 after:top-0 after:w-0 hover:after:w-full after:transition-all duration-150 ${
+      className={`border-[1.5px] text-nowrap border-[#5E2A29] ${width && "w-full"} py-[8px] px-[10px] lg:py-[0.521vw] lg:px-[1.042vw] relative after:absolute after:z-[1] after:h-full after:left-0 after:top-0 after:w-0 hover:after:w-full after:transition-all duration-150 ${
         fill
           ? "bg-[#5E2A29] after:bg-[#fff] text-white hover:text-[#5E2A29]"
           : "after:bg-[#5E2A29] hover:text-white text-[#5E2A29]"

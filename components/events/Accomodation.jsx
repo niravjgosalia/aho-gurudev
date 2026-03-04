@@ -147,8 +147,8 @@ const Accomodation = () => {
                   alt={item?.name}
                   className="lg:h-[16.615vw] w-full object-cover"
                 />
-                <div className=" p-2 lg:p-[0.75vw]">
-                  <h6 className=" heading-sm text-primary seasons">
+                <div className=" p-4 lg:p-[0.75vw]">
+                  <h6 className=" heading-sm !font-normal text-primary seasons">
                     {item?.name}
                   </h6>
                   <p
