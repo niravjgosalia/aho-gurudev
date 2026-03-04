@@ -17,7 +17,7 @@ const CommonBanner = () => {
         <Image
           height={1080}
           width={1920}
-          src={"/images/banner/event.png"}
+          src={"/images/banner/event-mob.png"}
           alt="banner"
           className=" w-full"
         />
