@@ -4,7 +4,7 @@ import React from "react";
 const CommonBanner = () => {
   return (
     <div>
-      <div className="  max-lg:hidden">
+      <div className=" pt-[4.5vw]  max-lg:hidden">
         <Image
           height={1080}
           width={1920}
