@@ -85,7 +85,7 @@ function DailyOffering() {
       <div className="relative w-full h-full containerx">
         <div className="flex items-center h-full lg:justify-center flex-wrap gap-6 lg:gap-[4vw]">
           <div className="headwrap">
-            <h3 className="heading leading-[1.2] mb-[10px] lg:mb-[0.7vw] seasons capitalize text-[#5E2A29]">
+            <h3 className="heading leading-[1] mb-[10px] lg:mb-[0.7vw] seasons capitalize text-[#5E2A29]">
               Daily Offering to <br /> Gurudevshri
             </h3>
             <p className="text-[14px] md:text-[20px] lg:text-[1.3vw] text-[#5E2A29]">

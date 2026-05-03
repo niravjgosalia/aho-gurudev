@@ -171,12 +171,17 @@ const JoinMovement = () => {
           color: #c9a25a;
           margin: 0 0 22px;
         }
+        .jm-inner { max-width: 1200px; }
         .jm-title {
           font-family: "The Seasons", serif !important;
-          font-size: clamp(40px, 6vw, 84px);
+          font-size: clamp(34px, 5vw, 72px);
           line-height: 1.05;
           color: #f5e3ba;
           margin: 0 0 22px;
+          white-space: nowrap;
+        }
+        @media (max-width: 720px) {
+          .jm-title { white-space: normal; font-size: clamp(30px, 8vw, 44px); }
         }
         .jm-title em {
           font-style: italic;

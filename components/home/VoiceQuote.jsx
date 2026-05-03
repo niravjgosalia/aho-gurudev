@@ -8,8 +8,7 @@ const VoiceQuote = () => {
     offset: ["start end", "end start"],
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const yText = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const yText = useTransform(scrollYProgress, [0, 1], [40, -40]);
   const opacityText = useTransform(
     scrollYProgress,
     [0, 0.25, 0.75, 1],
@@ -18,9 +17,7 @@ const VoiceQuote = () => {
 
   return (
     <section ref={ref} className="vq">
-      <motion.div className="vq-bg" style={{ y: yBg }} />
-      <div className="vq-vignette" />
-      <div className="vq-grain" aria-hidden />
+      <div className="vq-glow" aria-hidden />
 
       <motion.div
         className="vq-content"
@@ -42,86 +39,64 @@ const VoiceQuote = () => {
       <style jsx>{`
         .vq {
           position: relative;
-          min-height: clamp(560px, 90vh, 800px);
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: clamp(80px, 9vw, 140px) clamp(20px, 4vw, 80px);
+          padding: clamp(96px, 11vw, 160px) clamp(20px, 4vw, 80px);
           overflow: hidden;
           isolation: isolate;
-          color: #f5e3ba;
-          background: #2a1a14;
+          color: #2a1110;
+          background: linear-gradient(180deg, #fbf7ee 0%, #f4ecd9 100%);
         }
-        .vq-bg {
-          position: absolute;
-          inset: -120px 0 -120px 0;
-          z-index: -2;
-          background-image: url("/images/gurudev-portrait.jpg");
-          background-size: cover;
-          background-position: center 30%;
-          filter: brightness(0.55) saturate(0.9) contrast(1.02) sepia(0.08);
-        }
-        .vq-vignette {
+        .vq-glow {
           position: absolute;
           inset: 0;
           z-index: -1;
-          background:
-            radial-gradient(70% 60% at 50% 50%, rgba(42,26,20,0) 0%, rgba(42,26,20,0.45) 100%),
-            linear-gradient(180deg, rgba(42,26,20,0.45) 0%, rgba(42,26,20,0.05) 30%, rgba(42,26,20,0.05) 70%, rgba(42,26,20,0.7) 100%);
-        }
-        .vq-grain {
-          position: absolute;
-          inset: 0;
-          z-index: -1;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-          opacity: 0.06;
-          mix-blend-mode: overlay;
+          background: radial-gradient(60% 55% at 50% 50%, rgba(201, 162, 90, 0.16), transparent 70%);
+          pointer-events: none;
         }
         .vq-content {
           position: relative;
-          max-width: 1040px;
+          max-width: 940px;
           text-align: center;
         }
         .vq-flourish {
           width: 60px;
           height: 1px;
           background: linear-gradient(90deg, transparent, #c9a25a, transparent);
-          margin: 0 auto 22px;
+          margin: 0 auto 24px;
         }
         .vq-eyebrow {
           font-family: "Montserrat", sans-serif;
           font-size: 11px;
           letter-spacing: 0.36em;
           text-transform: uppercase;
-          color: #c9a25a;
-          margin: 0 0 32px;
+          color: #8a432f;
+          margin: 0 0 36px;
         }
         .vq-quote {
           font-family: "The Seasons", serif !important;
-          font-size: clamp(28px, 4.4vw, 64px);
-          line-height: 1.25;
+          font-size: clamp(28px, 4.2vw, 60px);
+          line-height: 1.28;
           letter-spacing: 0.005em;
-          color: #f5e3ba;
-          margin: 0 0 44px;
+          color: #2a1110;
+          margin: 0 0 40px;
           font-weight: 400;
           position: relative;
         }
         .vq-quote em {
           font-style: italic;
-          background: linear-gradient(180deg, #fbecc4 0%, #d6a85d 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: #8a432f;
         }
         .vq-mark {
           display: inline-block;
           font-family: Georgia, "Times New Roman", serif;
-          font-size: 1.1em;
+          font-size: 1.4em;
           color: #c9a25a;
-          margin-right: 8px;
+          margin-right: 6px;
           line-height: 0;
           position: relative;
-          top: 0.18em;
+          top: 0.22em;
         }
         .vq-attrib {
           display: inline-flex;
@@ -138,12 +113,13 @@ const VoiceQuote = () => {
           font-size: 11px;
           letter-spacing: 0.32em;
           text-transform: uppercase;
-          color: rgba(245, 227, 186, 0.9);
+          color: rgba(42, 17, 16, 0.7);
         }
 
         @media (max-width: 600px) {
-          .vq { min-height: 70vh; padding: 80px 22px; }
-          .vq-quote { font-size: 26px; line-height: 1.32; }
+          .vq { padding: 72px 22px; }
+          .vq-quote { font-size: 26px; line-height: 1.34; margin-bottom: 32px; }
+          .vq-eyebrow { margin-bottom: 28px; }
         }
       `}</style>
     </section>

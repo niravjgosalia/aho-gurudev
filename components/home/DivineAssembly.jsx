@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const sessions = [
   {
@@ -407,28 +407,6 @@ const DivineAssembly = () => {
         :global(.da-session.is-flipped) .da-session-img-wrap { order: 2; }
         :global(.da-session.is-flipped) .da-session-content { order: 1; }
 
-        /* Giant chapter numeral watermark */
-        .da-session-numeral {
-          position: absolute;
-          z-index: -1;
-          font-family: "The Seasons", serif !important;
-          font-style: italic;
-          font-size: clamp(220px, 30vw, 460px);
-          line-height: 0.85;
-          color: var(--accent);
-          opacity: 0.07;
-          letter-spacing: -0.03em;
-          pointer-events: none;
-          user-select: none;
-          right: -40px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-        :global(.da-session.is-flipped) .da-session-numeral {
-          right: auto;
-          left: -40px;
-        }
-
         .da-session-img-wrap {
           position: relative;
           aspect-ratio: 1 / 1;
@@ -511,6 +489,18 @@ const DivineAssembly = () => {
           position: relative;
           display: flex;
           flex-direction: column;
+        }
+        .da-session-meaning-eyebrow {
+          font-family: "The Seasons", serif !important;
+          font-style: italic;
+          font-size: clamp(22px, 2vw, 32px);
+          line-height: 1;
+          letter-spacing: 0.01em;
+          background: linear-gradient(180deg, #d6a85d 0%, var(--accent) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin: 0 0 6px;
         }
         .da-session-eyebrow {
           display: flex;
@@ -613,7 +603,7 @@ const DivineAssembly = () => {
         /* CTA */
         .da-cta-wrap {
           text-align: center;
-          padding: clamp(80px, 9vw, 140px) clamp(20px, 4vw, 80px) clamp(96px, 11vw, 160px);
+          padding: clamp(32px, 4vw, 56px) clamp(20px, 4vw, 80px) clamp(56px, 6vw, 88px);
           background: linear-gradient(180deg, transparent 0%, rgba(201, 162, 90, 0.12) 100%);
         }
         .da-cta-line {
@@ -621,10 +611,8 @@ const DivineAssembly = () => {
           font-style: italic;
           font-size: clamp(20px, 2vw, 32px);
           color: #2a1110;
-          margin: 0 0 32px;
+          margin: 0 auto 24px;
           max-width: 640px;
-          margin-left: auto;
-          margin-right: auto;
           line-height: 1.4;
         }
         .da-cta-btn {
@@ -648,7 +636,7 @@ const DivineAssembly = () => {
             0 0 0 1px rgba(245, 220, 160, 0.3) inset;
           position: relative;
           overflow: hidden;
-          margin: 0 0 24px;
+          margin: 0 0 18px;
         }
         .da-cta-btn::before {
           content: "";
@@ -679,13 +667,6 @@ const DivineAssembly = () => {
           :global(.da-session.is-flipped) .da-session-img-wrap { order: 1; }
           :global(.da-session.is-flipped) .da-session-content { order: 2; }
           .da-session-img-wrap { max-width: 520px; }
-          .da-session-numeral {
-            font-size: 240px;
-            right: -20px;
-            top: 60px;
-            transform: none;
-          }
-          :global(.da-session.is-flipped) .da-session-numeral { left: -20px; right: auto; }
         }
         /* Mobile */
         @media (max-width: 600px) {
@@ -695,8 +676,6 @@ const DivineAssembly = () => {
           .da-countdown-item { min-width: 48px; }
           :global(.da-session) { padding: 36px 0; gap: 22px; }
           .da-session-img-wrap { aspect-ratio: 16 / 10; max-width: 100%; }
-          .da-session-numeral { font-size: 160px; right: -10px; top: 20px; }
-          :global(.da-session.is-flipped) .da-session-numeral { left: -10px; }
           .da-session-name { font-size: 44px !important; }
           .da-session-meaning { margin-bottom: 16px; }
           .da-session-pull { font-size: 14px; padding-left: 14px; margin-bottom: 18px; line-height: 1.45; }
@@ -711,16 +690,8 @@ const DivineAssembly = () => {
 };
 
 const SessionRow = ({ sess, idx }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const numeralY = useTransform(scrollYProgress, [0, 1], [80, -80]);
-
   return (
     <motion.article
-      ref={ref}
       className={`da-session ${idx % 2 === 1 ? "is-flipped" : ""}`}
       style={{ "--accent": sess.accent }}
       initial={{ opacity: 0, y: 50 }}
@@ -728,14 +699,6 @@ const SessionRow = ({ sess, idx }) => {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
     >
-      <motion.span
-        className="da-session-numeral seasons"
-        style={{ y: numeralY }}
-        aria-hidden
-      >
-        {sess.code}
-      </motion.span>
-
       <div className="da-session-img-wrap">
         <div
           className="da-session-img"
@@ -751,10 +714,10 @@ const SessionRow = ({ sess, idx }) => {
       <div className="da-session-content">
         <p className="da-session-eyebrow">
           <span className="da-session-eyebrow-rule" />
-          Chapter {sess.code} · {sess.slotDate} · {sess.slotTime}
+          {sess.slotDate} · {sess.slotTime}
         </p>
+        <p className="da-session-meaning-eyebrow seasons">{sess.meaning}</p>
         <h3 className="da-session-name seasons">{sess.name}</h3>
-        <p className="da-session-meaning">— {sess.meaning} —</p>
 
         <p className="da-session-pull">{sess.pull}</p>
 
