@@ -6,17 +6,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const cities = [
   { name: "Dharampur",     country: "India",     continent: "Asia",          lat: 20.5,  lng:  73.2,    hub: true },
-  { name: "Mumbai",        country: "India",     continent: "Asia",          lat: 19.07, lng:  72.87 },
+  { name: "Mumbai",        country: "India",     continent: "Asia",          lat: 19.07, lng:  72.87, hub: true },
   { name: "Dubai",         country: "UAE",       continent: "Asia",          lat: 25.2,  lng:  55.27 },
   { name: "Singapore",     country: "Singapore", continent: "Asia",          lat:  1.35, lng: 103.8  },
-  { name: "London",        country: "UK",        continent: "Europe",        lat: 51.5,  lng:  -0.12 },
-  { name: "Toronto",       country: "Canada",    continent: "N. America",    lat: 43.6,  lng: -79.4  },
+  { name: "London",        country: "UK",        continent: "Europe",        lat: 51.5,  lng:  -0.12, hub: true },
+  { name: "Toronto",       country: "Canada",    continent: "N. America",    lat: 43.6,  lng: -79.4,  hub: true },
   { name: "Poconos",       country: "USA",       continent: "N. America",    lat: 41.0,  lng: -75.3  },
   { name: "New Jersey",    country: "USA",       continent: "N. America",    lat: 40.7,  lng: -74.1  },
-  { name: "Nairobi",       country: "Kenya",     continent: "Africa",        lat: -1.28, lng:  36.82 },
+  { name: "Nairobi",       country: "Kenya",     continent: "Africa",        lat: -1.28, lng:  36.82, hub: true },
   { name: "Dar es Salaam", country: "Tanzania",  continent: "Africa",        lat: -6.79, lng:  39.21 },
   { name: "Cape Town",     country: "S. Africa", continent: "Africa",        lat: -33.9, lng:  18.42 },
-  { name: "Sydney",        country: "Australia", continent: "Oceania",       lat: -33.8, lng: 151.2  },
+  { name: "Sydney",        country: "Australia", continent: "Oceania",       lat: -33.8, lng: 151.2,  hub: true },
 ];
 
 const cityEvents = {
@@ -156,6 +156,15 @@ function Globe() {
   const focusedIdxRef  = useRef(null);
   const [activeIdx, setActiveIdx] = useState(null);
   const [popupCity, setPopupCity] = useState(null);
+  const [showAllCities, setShowAllCities] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 700px)");
+    const sync = () => setShowAllCities(!mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
   const activeIdxRef   = useRef(null);
 
   // keep ref in sync for use inside the rAF loop without re-binding
@@ -625,11 +634,13 @@ function Globe() {
                 .map((c, i) => ({ ...c, idx: i }))
                 .filter((c) => c.continent === cont);
               if (list.length === 0) return null;
+              const visible = showAllCities ? list : list.filter((c) => c.hub);
+              if (visible.length === 0) return null;
               return (
                 <div key={cont} className="gl-cont">
                   <h4 className="gl-cont-title">{cont}</h4>
                   <ul className="gl-cont-list">
-                    {list.map((c) => {
+                    {visible.map((c) => {
                       const active = activeIdx === c.idx;
                       return (
                         <li
@@ -652,6 +663,21 @@ function Globe() {
                 </div>
               );
             })}
+
+            <button
+              type="button"
+              className="gl-cities-toggle"
+              onClick={() => setShowAllCities((v) => !v)}
+            >
+              {showAllCities ? "Show hub cities only" : "View all cities"}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" strokeWidth="1.6" stroke="currentColor">
+                {showAllCities ? (
+                  <polyline points="18 15 12 9 6 15" />
+                ) : (
+                  <polyline points="6 9 12 15 18 9" />
+                )}
+              </svg>
+            </button>
           </aside>
         </div>
 
@@ -971,6 +997,30 @@ function Globe() {
           .gl-cities { max-width: 560px; }
           .gl-canvas-wrap { height: clamp(380px, 60vh, 560px); }
         }
+        .gl-cities-toggle {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 16px;
+          padding: 10px 16px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 11px;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+          color: #c9a25a;
+          background: transparent;
+          border: 1px solid rgba(201, 162, 90, 0.4);
+          border-radius: 999px;
+          cursor: pointer;
+          transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .gl-cities-toggle:hover {
+          background: rgba(201, 162, 90, 0.08);
+          border-color: rgba(201, 162, 90, 0.7);
+          color: #f5e3ba;
+        }
+        .gl-cities-toggle svg { stroke-linecap: round; stroke-linejoin: round; }
+
         @media (max-width: 700px) {
           .gl {
             padding: 64px 22px;
