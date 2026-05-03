@@ -50,18 +50,11 @@ function Loader({ onComplete }) {
         {/* Text container with fixed position */}
         <div className="logowrapper text-center mx-auto flex flex-col justify-center items-center gap-[0.625vw]">
           <Image
-            src="/logo.png"
-            className="h-auto max-w-full"
-            width={865}
-            height={694}
-            alt="logo"
-          />
-          <Image
             src="/tag.png"
             className="h-auto max-w-full"
             width={721}
             height={139}
-            alt="logo tagline"
+            alt="Aho Gurudev"
           />
         </div>
         <div className="relative my-10 md:my-4 lg:my-[2.5vw] h-[3.333vw] w-full flex items-center justify-center">

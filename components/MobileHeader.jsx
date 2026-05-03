@@ -38,6 +38,8 @@ function MobileHeader({ onComplete }) {
     }
   }, [onComplete]);
 
+  const loaderHidden = true;
+
   useGSAP(() => {
     const tl = gsap.timeline({
       defaults: { ease: "power2.out" },
@@ -161,16 +163,15 @@ function MobileHeader({ onComplete }) {
 
       <div
         ref={logoWrapperRef}
-        // className="fixed logo-wrapper z-50 left-[35%] top-[24%]"
         className="fixed z-50 logo-wrapper"
       >
         <div className="logowrapper">
           <Image
-            src="/logo.png"
+            src="/tag.png"
             className="h-auto max-w-full logo"
-            width={865}
-            height={694}
-            alt="logo"
+            width={721}
+            height={139}
+            alt="Aho Gurudev"
           />
         </div>
       </div>
@@ -179,7 +180,8 @@ function MobileHeader({ onComplete }) {
       {/* Loader */}
       <div
         ref={loaderRef}
-        className="fixed inset-0 z-[48] flex flex-col items-center justify-center bg-white"
+        className={`fixed inset-0 z-[48] flex flex-col items-center justify-center bg-white transition-opacity duration-700 ${loaderHidden ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        style={{ zIndex: loaderHidden ? -1 : 48 }}
       >
         <div className="logowrapper text-center mx-auto flex flex-col justify-center items-center gap-[0.625vw]">
           <Image
@@ -187,7 +189,7 @@ function MobileHeader({ onComplete }) {
             className="h-auto max-w-full logotagline"
             width={721}
             height={139}
-            alt="logo tagline"
+            alt="Aho Gurudev"
           />
         </div>
 
@@ -253,11 +255,13 @@ function MobileHeader({ onComplete }) {
           <div className="bg-[#6B2C2C] text-white py-10 px-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.svg"
-                alt="Logo"
-                width={272}
-                height={53}
-                className="w-[272] h-[53]"
+                src="/tag.png"
+                alt="Aho Gurudev"
+                style={{
+                  height: "44px",
+                  width: "auto",
+                  filter: "brightness(1.4)",
+                }}
               />
             </div>
             <button onClick={() => setMenuOpen(false)}>
@@ -278,13 +282,7 @@ function MobileHeader({ onComplete }) {
             </button>
           </div>
 
-          <nav className="p-4">
-            <Link
-              href={"/events/0"}
-              className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
-            >
-              Events
-            </Link>
+          <nav className="p-4 flex flex-col">
             <div
               className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
             >
@@ -293,12 +291,12 @@ function MobileHeader({ onComplete }) {
             <div
               className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
             >
-              Social Impact
+              Celebrations
             </div>
             <div
               className={`${montserrat.className} py-3 text-[20px] text-[#322F35]`}
             >
-              Contact Us
+              Social Impact
             </div>
           </nav>
         </div>

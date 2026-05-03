@@ -1,87 +1,136 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+
 import Link from "next/link";
-import Button from "./Button";
 
 const HeaderWeb = () => {
-  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const links = [
-    {
-      name: "Events",
-      link: "/events/0",
-    },
-    {
-      name: "About Gurudevshri",
-      link: "#",
-    },
-    {
-      name: "Social Intiatives",
-      link: "#",
-    },
-    {
-      name: "Contact Us",
-      link: "#",
-    },
+    { name: "Events", link: "/events/0" },
+    { name: "About Gurudevshri", link: "#" },
+    { name: "Social Initiatives", link: "#" },
+    { name: "Contact Us", link: "#" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > 100 && currentScrollY > lastScrollY) {
-        // Scrolling down
-        setIsScrolledDown(true);
-      } else {
-        // Scrolling up or near the top
-        setIsScrolledDown(false);
-      }
-
-      setLastScrollY(currentScrollY);
+      const currentY = window.scrollY;
+      setScrolled(currentY > 60);
+      setHidden(currentY > 100 && currentY > lastScrollY);
+      setLastScrollY(currentY);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
   return (
-    <motion.div
+    <motion.header
       initial={{ y: 0 }}
-      animate={{ y: isScrolledDown ? -180 : 0 }} // Slides out when scrolling down
-      transition={{ type: "spring", stiffness: 100, damping: 20 }} // Smooth motion
-      className=" fixed top-0 z-10 lg:py-[0.625vw] w-full containerx bg-[#f3f2dd]"
+      animate={{ y: hidden ? -120 : 0 }}
+      transition={{ type: "spring", stiffness: 120, damping: 24 }}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 40,
+        padding: "0 clamp(20px, 4.167vw, 80px)",
+        transition: "background-color 0.4s ease, backdrop-filter 0.4s ease",
+        backgroundColor: scrolled
+          ? "rgba(51, 20, 24, 0.85)"
+          : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+      }}
     >
-      <div className="flex items-center justify-between h-full text-primary">
-        <div>
-          <Image
-            height={54}
-            width={277}
-            src={"/logo.svg"}
-            className=" lg:w-[14.375vw] "
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: "72px",
+        }}
+      >
+        {/* Wordmark */}
+        <Link href="/">
+          <img
+            src="/tag.png"
+            alt="Aho Gurudev"
+            style={{
+              width: "clamp(140px, 14vw, 220px)",
+              height: "auto",
+              display: "block",
+            }}
           />
-        </div>
-        <nav className=" flex items-center lg:gap-[2.083vw]">
-          {links?.map((item, index) => (
+        </Link>
+
+        {/* Nav Links */}
+        <nav
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "clamp(16px, 2vw, 40px)",
+          }}
+        >
+          {links.map((item, i) => (
             <Link
-              href={item?.link}
-              key={index}
-              className="font-medium uppercase "
+              key={i}
+              href={item.link}
+              style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "11px",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "var(--color-cream)",
+                opacity: 0.85,
+                textDecoration: "none",
+                transition: "opacity 0.25s ease",
+              }}
+              onMouseEnter={(e) => (e.target.style.opacity = "1")}
+              onMouseLeave={(e) => (e.target.style.opacity = "0.85")}
             >
-              {item?.name}
+              {item.name}
             </Link>
           ))}
-          <div>
-            <Image height={24} width={24} src={"/icons/search.svg"} />
-          </div>
-          <div>
-            <Button name={"Register now"} />
-          </div>
+
+          {/* Search icon */}
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "4px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--color-cream)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+
+          {/* Register button */}
+          <button
+            className="btn-brand btn-brand-filled"
+            style={{ padding: "10px 24px" }}
+          >
+            Register
+          </button>
         </nav>
       </div>
-    </motion.div>
+    </motion.header>
   );
 };
 

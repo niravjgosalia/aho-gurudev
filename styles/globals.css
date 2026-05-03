@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,6 +9,16 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  /* Brand System */
+  --color-burgundy-deep: #331418;
+  --color-burgundy: #5b1d33;
+  --color-rust: #8a432f;
+  --color-amber: #a76228;
+  --color-cream: #f8f1e5;
+  --color-charcoal: #282526;
+  --color-gold: #c9a257;
+  --color-gold-light: #e8d5a0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -182,4 +193,47 @@ a {
 }
 .video-highlight .swiper-pagination-bullet-active {
   scale: 1.2 !important;
+}
+
+/* === Brand Buttons === */
+.btn-brand {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.btn-brand:hover {
+  opacity: 0.88;
+}
+.btn-brand-filled {
+  background-color: var(--color-gold);
+  color: var(--color-burgundy-deep);
+}
+.btn-brand-ghost {
+  background-color: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* === Grain texture mixin (apply via .grain-overlay class) === */
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === Brand scroll indicator bounce === */
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
 }
