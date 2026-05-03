@@ -176,7 +176,7 @@ const DivineAssembly = () => {
         </p>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .da {
           position: relative;
           color: #2a1110;
