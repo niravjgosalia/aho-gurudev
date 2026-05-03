@@ -973,15 +973,21 @@ function Globe() {
         }
         @media (max-width: 700px) {
           .gl {
-            padding: 80px 22px;
+            padding: 64px 22px;
           }
-          .gl-head { margin-bottom: 36px; }
+          .gl-head { margin-bottom: 28px; }
           .gl-title-a { font-size: clamp(22px, 6.5vw, 36px); }
           .gl-title-b { font-size: clamp(64px, 17vw, 110px); line-height: 0.95; }
           .gl-eyebrow { font-size: 10px; letter-spacing: 0.24em; }
-          .gl-city-country { display: none; }
-          .gl-city-name { font-size: 17px; }
-          .gl-canvas-wrap { height: clamp(320px, 55vh, 440px); }
+          .gl-canvas-wrap { height: 320px; margin-bottom: 8px; }
+          .gl-cities-label { margin: 28px 0 14px; font-size: 10px; }
+          .gl-cont { margin-bottom: 16px; }
+          .gl-cont-title { font-size: 12px; margin-bottom: 8px; }
+          .gl-cont-list { gap: 4px; }
+          .gl-city { padding: 10px 12px; }
+          .gl-city-name { font-size: 15px; }
+          .gl-city-country { font-size: 11px; opacity: 0.7; }
+          .gl-city-hub { font-size: 9px; padding: 2px 6px; }
         }
 
         /* === City popup === */

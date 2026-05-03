@@ -82,55 +82,49 @@ function WhoIsGurudev() {
 
   return (
     <section ref={sectionRef} className="wig">
-      <div className="wig-grid">
-        {/* LEFT — Editorial copy column */}
-        <div className="wig-col-text">
-          <p ref={eyebrowRef} className="wig-eyebrow">
-            <span className="wig-eyebrow-mark" />
-            The Living Master&nbsp;·&nbsp;A 60 Year Journey
-          </p>
+      <div className="wig-stack">
+        <p ref={eyebrowRef} className="wig-eyebrow">
+          <span className="wig-eyebrow-mark" />
+          The Living Master&nbsp;·&nbsp;A 60 Year Journey
+        </p>
 
-          <h2 className="wig-title seasons">
-            <span ref={titleSmallRef} className="wig-title-sm">Who is</span>
-            <span className="wig-title-row">
-              <span ref={titleBigRef} className="wig-title-big">Gurudev</span>
-              <span ref={titleQRef} className="wig-title-q seasons">?</span>
-            </span>
-          </h2>
+        <h2 className="wig-title seasons">
+          <span ref={titleSmallRef} className="wig-title-sm">Who is</span>
+          <span className="wig-title-row">
+            <span ref={titleBigRef} className="wig-title-big">Gurudev</span>
+            <span ref={titleQRef} className="wig-title-q seasons">?</span>
+          </span>
+        </h2>
 
-          <p ref={bodyRef} className="wig-body">
-            Born amongst us, Pujya Gurudevshri Rakeshji lives beyond us. He walks
-            the earth as an embodiment of enlightenment — a primal force of
-            divinity, awakening souls to their pure, peaceful, powerful nature.
-          </p>
-
-          <div ref={quoteRef} className="wig-quote">
-            <span className="wig-quote-mark">“</span>
-            <em>To uplift, to awaken, to liberate.</em>
-          </div>
-
-          <div ref={ctaRef} className="wig-cta">
-            <button className="wig-cta-arrow" aria-label="Explore">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </button>
-            <button className="wig-cta-pill">His Journey</button>
-          </div>
+        <div ref={photoWrapRef} className="wig-photo">
+          <img
+            ref={photoImgRef}
+            src="/images/gurudev-portrait.jpg"
+            alt="Pujya Gurudevshri Rakeshji"
+          />
+          <div className="wig-photo-frame" />
+          <div className="wig-photo-grad" />
         </div>
 
-        {/* RIGHT — Single portrait */}
-        <div className="wig-col-photo">
-          <div ref={photoWrapRef} className="wig-photo">
-            <img
-              ref={photoImgRef}
-              src="/images/gurudev-portrait.jpg"
-              alt="Pujya Gurudevshri Rakeshji"
-            />
-            <div className="wig-photo-frame" />
-            <div className="wig-photo-grad" />
-          </div>
+        <p ref={bodyRef} className="wig-body">
+          Born amongst us, Pujya Gurudevshri Rakeshji lives beyond us. He walks
+          the earth as an embodiment of enlightenment — a primal force of
+          divinity, awakening souls to their pure, peaceful, powerful nature.
+        </p>
+
+        <div ref={quoteRef} className="wig-quote">
+          <span className="wig-quote-mark">“</span>
+          <em>To uplift, to awaken, to liberate.</em>
+        </div>
+
+        <div ref={ctaRef} className="wig-cta">
+          <button className="wig-cta-arrow" aria-label="Explore">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </button>
+          <button className="wig-cta-pill">His Sacred Life</button>
         </div>
       </div>
 
@@ -154,19 +148,16 @@ function WhoIsGurudev() {
           z-index: 0;
         }
 
-        .wig-grid {
+        .wig-stack {
           position: relative;
           z-index: 2;
-          max-width: 1320px;
+          max-width: 760px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1.05fr 1fr;
-          gap: clamp(40px, 5vw, 96px);
+          display: flex;
+          flex-direction: column;
           align-items: center;
+          text-align: center;
         }
-
-        /* === LEFT COLUMN === */
-        .wig-col-text { position: relative; }
 
         .wig-eyebrow {
           display: inline-flex;
@@ -209,6 +200,7 @@ function WhoIsGurudev() {
         .wig-title-row {
           display: flex;
           align-items: flex-start;
+          justify-content: center;
           gap: 6px;
           margin-top: 4px;
         }
@@ -244,22 +236,24 @@ function WhoIsGurudev() {
           opacity: 0;
           transform: translateY(12px);
           line-height: 1.8;
-          max-width: 480px;
-          margin: 0 0 32px;
+          max-width: 560px;
+          margin: 0 auto 32px;
         }
 
         .wig-quote {
           position: relative;
-          padding: 16px 0 16px 24px;
-          margin: 0 0 36px;
-          border-left: 1px solid var(--color-gold, #c9a257);
+          padding: 16px 28px;
+          margin: 0 auto 36px;
+          border-top: 1px solid rgba(201, 162, 87, 0.4);
+          border-bottom: 1px solid rgba(201, 162, 87, 0.4);
           font-family: "The Seasons", serif;
           font-size: clamp(18px, 1.5vw, 22px);
           color: var(--color-burgundy-deep, #331418);
           line-height: 1.5;
-          max-width: 460px;
+          max-width: 520px;
           opacity: 0;
           transform: translateX(-12px);
+          text-align: center;
         }
         .wig-quote em {
           font-style: italic;
@@ -277,6 +271,7 @@ function WhoIsGurudev() {
         .wig-cta {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 16px;
           opacity: 0;
           transform: translateY(8px);
@@ -315,12 +310,13 @@ function WhoIsGurudev() {
           color: var(--color-gold, #c9a257);
         }
 
-        /* === RIGHT COLUMN === */
-        .wig-col-photo { position: relative; }
-
+        /* === PORTRAIT === */
         .wig-photo {
           position: relative;
+          width: 100%;
+          max-width: 460px;
           aspect-ratio: 4 / 5;
+          margin: 0 auto 36px;
           border-radius: 4px;
           overflow: hidden;
           box-shadow:
@@ -382,13 +378,7 @@ function WhoIsGurudev() {
 
         /* Tablet */
         @media (max-width: 1024px) {
-          .wig-grid {
-            grid-template-columns: 1fr;
-            gap: 56px;
-            max-width: 640px;
-          }
-          .wig-col-text { order: -1; }
-          .wig-photo { aspect-ratio: 5 / 6; }
+          .wig-photo { aspect-ratio: 5 / 6; max-width: 380px; }
         }
         /* Phone */
         @media (max-width: 600px) {

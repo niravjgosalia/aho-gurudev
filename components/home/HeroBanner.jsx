@@ -77,7 +77,7 @@ const HeroBanner = ({ loading }) => {
             Explore Events
           </a>
           <a href="#who" className="hero-redesign__btn hero-redesign__btn--ghost">
-            His Journey
+            His Sacred Life
           </a>
         </div>
       </div>

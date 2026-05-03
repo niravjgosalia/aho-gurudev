@@ -21,7 +21,10 @@ function MobileHeader({ onComplete }) {
   const afterlogoposRef = useRef(null);
   const logoContainerRef = useRef(null);
 
+  const loaderHidden = true;
+
   useGSAP(() => {
+    if (loaderHidden) return;
     // Place logo above tag.png before animations
     const tagImg = loaderRef.current.querySelector(".logotagline");
     if (tagImg && logoWrapperRef.current) {
@@ -38,9 +41,8 @@ function MobileHeader({ onComplete }) {
     }
   }, [onComplete]);
 
-  const loaderHidden = true;
-
   useGSAP(() => {
+    if (loaderHidden) return;
     const tl = gsap.timeline({
       defaults: { ease: "power2.out" },
       onComplete: onComplete,
@@ -124,11 +126,11 @@ function MobileHeader({ onComplete }) {
     <>
       <header className="fixed z-[47] bg-[#f3f2dd] w-full">
         <div className="py-[10px] container px-4 mx-auto ">
-          <div className="flex justify-between">
-            <div>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
               <button
                 ref={menuBtnRef}
-                className="menubtn"
+                className="menubtn flex items-center"
                 onClick={() => setMenuOpen(true)}
               >
                 <Image
@@ -138,14 +140,25 @@ function MobileHeader({ onComplete }) {
                   alt="menu button"
                 />
               </button>
-              <button
+              <Link
                 ref={afterlogoposRef}
-                className="logoposRef ps-3 w-[46px] h-[36px]"
-              ></button>
+                href="/"
+                className="logoposRef inline-flex items-center"
+                aria-label="Aho Gurudev"
+              >
+                <Image
+                  src="/tag.png"
+                  width={721}
+                  height={139}
+                  alt="Aho Gurudev"
+                  className="h-7 w-auto"
+                  priority
+                />
+              </Link>
             </div>
 
-            <div className="flex items-center gap-[1rem]">
-              <button className="searchbtn">
+            <div className="flex items-center gap-3">
+              <button className="searchbtn flex items-center">
                 <Image
                   src="/images/serach.png"
                   width={24}
@@ -153,28 +166,28 @@ function MobileHeader({ onComplete }) {
                   alt="search"
                 />
               </button>
-              <div>
-                <Button name={"Events"} />
-              </div>
+              <Button name={"Events"} />
             </div>
           </div>
         </div>
       </header>
 
-      <div
-        ref={logoWrapperRef}
-        className="fixed z-50 logo-wrapper"
-      >
-        <div className="logowrapper">
-          <Image
-            src="/tag.png"
-            className="h-auto max-w-full logo"
-            width={721}
-            height={139}
-            alt="Aho Gurudev"
-          />
+      {!loaderHidden && (
+        <div
+          ref={logoWrapperRef}
+          className="fixed z-50 logo-wrapper"
+        >
+          <div className="logowrapper">
+            <Image
+              src="/tag.png"
+              className="h-auto max-w-full logo"
+              width={721}
+              height={139}
+              alt="Aho Gurudev"
+            />
+          </div>
         </div>
-      </div>
+      )}
       {/* </div> */}
 
       {/* Loader */}

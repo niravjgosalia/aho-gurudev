@@ -693,10 +693,16 @@ const DivineAssembly = () => {
           .da-countdown { padding: 18px 22px; }
           .da-countdown-grid { gap: 14px; }
           .da-countdown-item { min-width: 48px; }
-          :global(.da-session) { padding: 48px 0; gap: 28px; }
-          .da-session-numeral { font-size: 180px; right: -10px; top: 30px; }
+          :global(.da-session) { padding: 36px 0; gap: 22px; }
+          .da-session-img-wrap { aspect-ratio: 16 / 10; max-width: 100%; }
+          .da-session-numeral { font-size: 160px; right: -10px; top: 20px; }
           :global(.da-session.is-flipped) .da-session-numeral { left: -10px; }
-          .da-session-pull { font-size: 16px; padding-left: 16px; }
+          .da-session-name { font-size: 44px !important; }
+          .da-session-meaning { margin-bottom: 16px; }
+          .da-session-pull { font-size: 14px; padding-left: 14px; margin-bottom: 18px; line-height: 1.45; }
+          .da-session-meta { padding: 12px 0; margin-bottom: 16px; }
+          .da-session-list li { font-size: 13px; padding: 6px 0; line-height: 1.5; }
+          .da-session-list li .da-bullet { margin-top: 7px; }
           .da-cta-btn { padding: 18px 36px; font-size: 11px; }
         }
       `}</style>

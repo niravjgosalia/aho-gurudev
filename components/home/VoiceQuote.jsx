@@ -50,7 +50,7 @@ const VoiceQuote = () => {
           overflow: hidden;
           isolation: isolate;
           color: #f5e3ba;
-          background: #0a0504;
+          background: #2a1a14;
         }
         .vq-bg {
           position: absolute;
@@ -59,15 +59,15 @@ const VoiceQuote = () => {
           background-image: url("/images/gurudev-portrait.jpg");
           background-size: cover;
           background-position: center 30%;
-          filter: brightness(0.32) saturate(0.85) contrast(1.05);
+          filter: brightness(0.55) saturate(0.9) contrast(1.02) sepia(0.08);
         }
         .vq-vignette {
           position: absolute;
           inset: 0;
           z-index: -1;
           background:
-            radial-gradient(60% 50% at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%),
-            linear-gradient(180deg, rgba(10,5,4,0.6) 0%, rgba(10,5,4,0.15) 35%, rgba(10,5,4,0.15) 65%, rgba(10,5,4,0.85) 100%);
+            radial-gradient(70% 60% at 50% 50%, rgba(42,26,20,0) 0%, rgba(42,26,20,0.45) 100%),
+            linear-gradient(180deg, rgba(42,26,20,0.45) 0%, rgba(42,26,20,0.05) 30%, rgba(42,26,20,0.05) 70%, rgba(42,26,20,0.7) 100%);
         }
         .vq-grain {
           position: absolute;
